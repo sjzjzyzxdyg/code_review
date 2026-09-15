@@ -15,7 +15,7 @@ from app.core.config import settings
 # This keeps the storage layer generic instead of hand-rolling a table per
 # entity, while still giving each entity a real file-backed, crash-safe home
 # instead of a process-lifetime dict.
-TABLES = ("projects", "review_tasks", "issues", "reports")
+TABLES = ("projects", "review_tasks", "issues", "reports", "suppressions", "file_scan_cache")
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS {table} (

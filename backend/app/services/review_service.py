@@ -1,4 +1,5 @@
 import concurrent.futures
+import hashlib
 import logging
 import threading
 from datetime import datetime
@@ -12,10 +13,11 @@ from app.agents.report_generation_agent import ReportGenerationAgent
 from app.agents.result_validation_agent import ResultValidationAgent
 from app.core.db import Database, get_db
 from app.schemas.issue import ReviewIssueRead
-from app.schemas.review import ReviewTaskCreate, ReviewTaskRead
+from app.schemas.review import ReviewTaskCreate, ReviewTaskDiff, ReviewTaskRead
 from app.services.issue_service import issue_service
 from app.services.project_service import project_service
 from app.services.report_service import report_service
+from app.services.suppression_service import suppression_service
 from app.agents.taint_flow_agent import TaintFlowAgent
 from app.tools.clang_analyzer_tool import ClangAnalyzerTool
 from app.tools.clang_custom_checker import ClangCustomCheckerTool
@@ -38,6 +40,10 @@ _RISK_RANK: dict[str, int] = {"low": 0, "medium": 1, "high": 2, "critical": 3}
 _IN_PROGRESS_STATUSES = {
     "static_analyzing", "llm_reviewing", "result_validating", "report_generating",
 }
+
+# Extensions hashed for incremental cppcheck re-scans. Headers are included
+# since changing one can change cppcheck's findings in files that include it.
+_HASHED_SOURCE_EXTS = {".c", ".cc", ".cpp", ".cxx", ".h", ".hpp"}
 
 
 class ReviewService:
@@ -78,6 +84,43 @@ class ReviewService:
             )
         return ReviewTaskRead.model_validate(row)
 
+    def get_task_diff(self, task_id: str) -> ReviewTaskDiff:
+        """Compare this task's issues against the project's most recent
+        completed task before it, so callers can show "what's new since
+        last scan" instead of the full issue list every time."""
+        task = self.get_task(task_id)
+        siblings = [
+            ReviewTaskRead.model_validate(row)
+            for row in self._db.list("review_tasks", parent_id=task.project_id)
+        ]
+        previous = max(
+            (
+                t for t in siblings
+                if t.id != task_id and t.status == "completed" and t.created_at < task.created_at
+            ),
+            key=lambda t: t.created_at,
+            default=None,
+        )
+
+        current_issues = issue_service.list_issues(task_id=task_id)
+        if previous is None:
+            return ReviewTaskDiff(task_id=task_id, previous_task_id=None, new_issues=current_issues)
+
+        previous_issues = issue_service.list_issues(task_id=previous.id)
+
+        def key(issue: ReviewIssueRead) -> tuple:
+            return (issue.file_path, issue.line, issue.rule_id)
+
+        previous_keys = {key(i) for i in previous_issues}
+        current_keys = {key(i) for i in current_issues}
+        return ReviewTaskDiff(
+            task_id=task_id,
+            previous_task_id=previous.id,
+            new_issues=[i for i in current_issues if key(i) not in previous_keys],
+            resolved_issues=[i for i in previous_issues if key(i) not in current_keys],
+            unchanged_count=len(current_keys & previous_keys),
+        )
+
     def cancel_task(self, task_id: str) -> ReviewTaskRead:
         task = self.get_task(task_id)
         cancelled = task.model_copy(
@@ -110,12 +153,34 @@ class ReviewService:
             project_root = Path(project_service.get_project(task.project_id).local_path or "")
             include_paths = self._discover_include_paths(project_root, scan_path)
 
-            # ── Phase 1: Detection (all tools in parallel) ────────────────────
-            static_findings, taint_issues = self._run_detection_parallel(
-                scan_path, task.rule_config, task_id, include_paths
-            )
+            # ── Incremental cppcheck: reuse cached findings for files whose
+            #    content hasn't changed since this project's last scan ───────
+            cppcheck_enabled = bool(task.rule_config.get("cppcheck", True))
+            if cppcheck_enabled:
+                file_cache = self._load_file_cache(task.project_id)
+                current_hashes = self._hash_source_files(scan_path)
+                cppcheck_target_files, cached_cppcheck_findings, rescanned_rels = (
+                    self._plan_incremental_cppcheck(file_cache, current_hashes, scan_path)
+                )
+            else:
+                cppcheck_target_files, cached_cppcheck_findings, rescanned_rels = None, [], set()
 
-            # ── Phase 2: Prioritise + cap before LLM review ───────────────────
+            # ── Phase 1: Detection (all tools in parallel) ────────────────────
+            static_findings, taint_issues, fresh_cppcheck_findings = self._run_detection_parallel(
+                scan_path, task.rule_config, task_id, include_paths,
+                cppcheck_target_files=cppcheck_target_files,
+            )
+            static_findings = static_findings + cached_cppcheck_findings
+
+            if cppcheck_enabled:
+                self._save_file_cache(
+                    task.project_id, scan_path, current_hashes, file_cache,
+                    fresh_cppcheck_findings, rescanned_rels,
+                )
+
+            # ── Phase 2: Drop findings the user already marked false-positive,
+            #             then prioritise + cap before LLM review ─────────────
+            static_findings = self._filter_suppressed(static_findings, task.project_id, scan_path)
             static_findings = self._prioritize_findings(static_findings)
 
             # ── Phase 3: LLM review of static findings (parallel) ────────────
@@ -184,7 +249,8 @@ class ReviewService:
     def _run_detection_parallel(
         self, scan_path: Path, rule_config: dict, task_id: str,
         include_paths: list[Path] | None = None,
-    ) -> tuple[list[dict], list[ReviewIssueRead]]:
+        cppcheck_target_files: list[Path] | None = None,
+    ) -> tuple[list[dict], list[ReviewIssueRead], list[dict]]:
         with concurrent.futures.ThreadPoolExecutor(max_workers=_DETECT_WORKERS) as pool:
             pending: dict[str, tuple[concurrent.futures.Future, bool]] = {}
 
@@ -195,7 +261,7 @@ class ReviewService:
                     pool.submit(
                         self.cppcheck_tool.run, scan_path,
                         rule_level=rule_level, rule_files=rule_files,
-                        include_paths=include_paths,
+                        include_paths=include_paths, target_files=cppcheck_target_files,
                     ),
                     True,
                 )
@@ -210,6 +276,7 @@ class ReviewService:
 
             static_findings: list[dict] = []
             taint_issues: list[ReviewIssueRead] = []
+            cppcheck_findings: list[dict] = []
 
             for key, (future, fatal) in pending.items():
                 try:
@@ -227,8 +294,88 @@ class ReviewService:
                     taint_issues = result or []
                 else:
                     static_findings.extend(result or [])
+                    if key == "cppcheck":
+                        cppcheck_findings = result or []
 
-        return static_findings, taint_issues
+        return static_findings, taint_issues, cppcheck_findings
+
+    # ── Incremental cppcheck scanning ────────────────────────────────────────
+
+    def _hash_source_files(self, scan_path: Path) -> dict[str, str]:
+        """Return {relative_posix_path: sha256} for every hashable source
+        file under scan_path, used to detect what changed since last scan."""
+        hashes: dict[str, str] = {}
+        if not scan_path.is_dir():
+            return hashes
+        for path in scan_path.rglob("*"):
+            if not path.is_file() or path.suffix.lower() not in _HASHED_SOURCE_EXTS:
+                continue
+            try:
+                digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            except OSError:
+                continue
+            rel = str(path.relative_to(scan_path)).replace("\\", "/")
+            hashes[rel] = digest
+        return hashes
+
+    def _load_file_cache(self, project_id: str) -> dict[str, dict]:
+        rows = self._db.list("file_scan_cache", parent_id=project_id)
+        return {row["file_path"]: row for row in rows if row.get("file_path")}
+
+    def _plan_incremental_cppcheck(
+        self, file_cache: dict[str, dict], current_hashes: dict[str, str], scan_path: Path,
+    ) -> tuple[list[Path] | None, list[dict], set[str]]:
+        """Decide what cppcheck actually needs to (re)scan this run.
+
+        Returns (target_files, cached_findings, rescanned_relpaths):
+        - target_files=None means "scan the whole directory as before"
+          (first-ever scan of this project, or every file changed — the
+          partial-scan path buys nothing in either case).
+        - Otherwise target_files is the subset of changed/new files to pass
+          to cppcheck, cached_findings are reused findings for the unchanged
+          files, and rescanned_relpaths tells _save_file_cache which cache
+          entries to overwrite vs. carry forward untouched.
+        """
+        changed = {rel for rel, h in current_hashes.items() if file_cache.get(rel, {}).get("hash") != h}
+        unchanged = set(current_hashes) - changed
+        if not file_cache or not unchanged:
+            return None, [], set(current_hashes)
+        cached_findings = [f for rel in unchanged for f in file_cache[rel].get("findings", [])]
+        target_files = [scan_path / rel for rel in changed]
+        return target_files, cached_findings, changed
+
+    def _save_file_cache(
+        self, project_id: str, scan_path: Path, current_hashes: dict[str, str],
+        previous_cache: dict[str, dict], fresh_findings: list[dict], rescanned_rels: set[str],
+    ) -> None:
+        findings_by_rel: dict[str, list[dict]] = {rel: [] for rel in rescanned_rels}
+        for finding in fresh_findings:
+            rel = self._make_finding_relative(finding, scan_path).get("file_path")
+            if rel in findings_by_rel:
+                findings_by_rel[rel].append(finding)
+
+        now = datetime.utcnow().isoformat()
+        entries: list[tuple[str, str, dict]] = []
+        for rel, file_hash in current_hashes.items():
+            if rel in rescanned_rels:
+                findings = findings_by_rel.get(rel, [])
+            else:
+                findings = previous_cache.get(rel, {}).get("findings", [])
+            entries.append((
+                f"{project_id}:{rel}", now,
+                {"file_path": rel, "hash": file_hash, "findings": findings},
+            ))
+        self._db.replace_children("file_scan_cache", project_id, entries)
+
+    def _filter_suppressed(self, findings: list[dict], project_id: str, scan_path: Path) -> list[dict]:
+        kept = []
+        for finding in findings:
+            rel = self._make_finding_relative(finding, scan_path).get("file_path", finding.get("file_path", ""))
+            line = int(finding.get("line") or 1)
+            if suppression_service.is_suppressed(project_id, str(rel), finding.get("rule_id"), line):
+                continue
+            kept.append(finding)
+        return kept
 
     def _prioritize_findings(self, findings: list[dict]) -> list[dict]:
         """Sort by severity (errors first) and cap to _MAX_LLM_FINDINGS."""

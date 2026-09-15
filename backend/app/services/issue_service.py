@@ -108,6 +108,15 @@ class IssueService:
             )
         return ReviewIssueRead.model_validate(row)
 
+    def mark_false_positive(self, issue_id: str) -> ReviewIssueRead:
+        issue = self.get_issue(issue_id)
+        updated = issue.model_copy(update={"is_valid": False})
+        self._db.upsert(
+            "issues", updated.id, updated.task_id,
+            updated.created_at.isoformat(), updated.model_dump(mode="json"),
+        )
+        return updated
+
     def _normalize_risk_level(self, severity: str) -> str:
         mapping = {
             "error": "high",

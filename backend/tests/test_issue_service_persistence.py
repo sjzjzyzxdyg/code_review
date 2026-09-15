@@ -63,3 +63,13 @@ def test_issues_survive_service_restart(tmp_path: Path) -> None:
     restarted = IssueService(db=Database(db_path))
 
     assert [i.id for i in restarted.list_issues(task_id="task-a")] == ["i1"]
+
+
+def test_mark_false_positive_flips_is_valid_and_persists(tmp_path: Path) -> None:
+    service = IssueService(db=Database(tmp_path / "test.db"))
+    service.replace_task_issues("task-a", [_make_issue("i1", "task-a")])
+
+    updated = service.mark_false_positive("i1")
+
+    assert updated.is_valid is False
+    assert service.get_issue("i1").is_valid is False

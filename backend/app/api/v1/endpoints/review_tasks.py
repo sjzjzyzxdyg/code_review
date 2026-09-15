@@ -1,6 +1,6 @@
 from fastapi import APIRouter, BackgroundTasks, status
 
-from app.schemas.review import ReviewTaskCreate, ReviewTaskRead
+from app.schemas.review import ReviewTaskCreate, ReviewTaskDiff, ReviewTaskRead
 from app.services.review_service import review_service
 
 router = APIRouter()
@@ -35,3 +35,8 @@ def cancel_review_task(task_id: str) -> ReviewTaskRead:
 @router.post("/{task_id}/run", response_model=ReviewTaskRead)
 def run_review_task(task_id: str) -> ReviewTaskRead:
     return review_service.run_task(task_id)
+
+
+@router.get("/{task_id}/diff", response_model=ReviewTaskDiff)
+def get_review_task_diff(task_id: str) -> ReviewTaskDiff:
+    return review_service.get_task_diff(task_id)

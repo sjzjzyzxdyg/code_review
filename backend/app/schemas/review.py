@@ -3,6 +3,8 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
+from app.schemas.issue import ReviewIssueRead
+
 
 ReviewStatus = Literal[
     "created",
@@ -33,3 +35,11 @@ class ReviewTaskRead(BaseModel):
     created_at: datetime
     started_at: datetime | None = None
     finished_at: datetime | None = None
+
+
+class ReviewTaskDiff(BaseModel):
+    task_id: str
+    previous_task_id: str | None = None
+    new_issues: list[ReviewIssueRead] = Field(default_factory=list)
+    resolved_issues: list[ReviewIssueRead] = Field(default_factory=list)
+    unchanged_count: int = 0

@@ -1,3 +1,7 @@
+from pathlib import Path
+
+import pytest
+
 from app.tools.cppcheck_tool import CppcheckTool
 
 _SAMPLE_XML = """<?xml version="1.0" encoding="UTF-8"?>
@@ -42,3 +46,41 @@ def test_parse_xml_handles_empty_and_malformed_input() -> None:
 
     assert tool._parse_xml("") == []
     assert tool._parse_xml("not xml") == []
+
+
+def test_run_with_empty_target_files_skips_subprocess(monkeypatch: pytest.MonkeyPatch) -> None:
+    tool = CppcheckTool()
+    called = False
+
+    def fake_run(*args, **kwargs):
+        nonlocal called
+        called = True
+
+    monkeypatch.setattr("subprocess.run", fake_run)
+
+    findings = tool.run(Path("/some/project"), target_files=[])
+
+    assert findings == []
+    assert called is False
+
+
+def test_run_with_target_files_passes_explicit_files_not_directory(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    tool = CppcheckTool()
+    captured_command: list[str] = []
+
+    class FakeResult:
+        stderr = ""
+
+    def fake_run(command, **kwargs):
+        captured_command.extend(command)
+        return FakeResult()
+
+    monkeypatch.setattr("subprocess.run", fake_run)
+    changed = tmp_path / "changed.cpp"
+
+    tool.run(tmp_path, target_files=[changed])
+
+    assert str(changed) in captured_command
+    assert str(tmp_path) not in captured_command

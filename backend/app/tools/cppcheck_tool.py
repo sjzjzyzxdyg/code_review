@@ -48,7 +48,16 @@ class CppcheckTool:
         rule_level: str = "all",
         rule_files: list[Path] | None = None,
         include_paths: list[Path] | None = None,
+        target_files: list[Path] | None = None,
     ) -> list[dict]:
+        """Run cppcheck against `project_path`, or against just
+        `target_files` when given (used for incremental re-scans: the caller
+        has already worked out which files changed since the last scan of
+        this project). `target_files=[]` means "nothing changed" — skip
+        invoking the tool entirely rather than running it with no target."""
+        if target_files is not None and not target_files:
+            return []
+
         command = [
             "cppcheck",
             "--enable=all" if rule_level == "all" else f"--enable={rule_level}",
@@ -62,7 +71,10 @@ class CppcheckTool:
             command.extend(["-I", str(inc)])
         for rf in (rule_files or []):
             command.append(f"--rule-file={rf}")
-        command.append(str(project_path))
+        if target_files:
+            command.extend(str(f) for f in target_files)
+        else:
+            command.append(str(project_path))
 
         try:
             result = subprocess.run(
