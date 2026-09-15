@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
+import { theme as antTheme } from "ant-design-vue";
 import {
   CloudUploadOutlined,
   FileSearchOutlined,
+  FolderOpenOutlined,
   PlayCircleOutlined,
-  ReloadOutlined
+  ReloadOutlined,
+  SafetyCertificateOutlined,
+  ScheduleOutlined
 } from "@ant-design/icons-vue";
 import type { UploadChangeParam, UploadProps } from "ant-design-vue";
 import {
@@ -13,6 +17,8 @@ import {
   listProjects,
   listReports,
   listTasks,
+  registerLocalFiles,
+  registerLocalProject,
   runTask,
   uploadProject,
   type Project,
@@ -22,6 +28,8 @@ import {
 } from "./api";
 
 const loading = ref(false);
+const localFolderPath = ref("");
+const localFilePaths = ref("");
 const selectedProjectId = ref<string>();
 const selectedTaskId = ref<string>();
 const scanScope = ref(".");
@@ -33,6 +41,23 @@ const tasks = ref<ReviewTask[]>([]);
 const issues = ref<ReviewIssue[]>([]);
 const reports = ref<ReviewReport[]>([]);
 const activeIssue = ref<ReviewIssue>();
+
+const accentColor = "#6366f1";
+const appTheme = {
+  token: {
+    colorPrimary: accentColor,
+    borderRadius: 8
+  }
+};
+const sideTheme = {
+  algorithm: antTheme.darkAlgorithm,
+  token: {
+    colorPrimary: accentColor,
+    borderRadius: 8,
+    colorBgContainer: "#1b2333",
+    colorBgLayout: "#141a29"
+  }
+};
 
 const activeCallNodes = computed(() => activeIssue.value?.call_chain_graph?.nodes ?? []);
 const activeCallEdges = computed(() => activeIssue.value?.call_chain_graph?.edges ?? []);
@@ -107,6 +132,37 @@ const uploadProps: UploadProps = {
   }
 };
 
+async function registerFiles() {
+  const paths = localFilePaths.value
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean);
+  if (!paths.length) return;
+  loading.value = true;
+  try {
+    const project = await registerLocalFiles(paths);
+    projects.value = await listProjects();
+    selectedProjectId.value = project.id;
+    localFilePaths.value = "";
+  } finally {
+    loading.value = false;
+  }
+}
+
+async function registerLocalPath() {
+  const path = localFolderPath.value.trim();
+  if (!path) return;
+  loading.value = true;
+  try {
+    const project = await registerLocalProject(path);
+    projects.value = await listProjects();
+    selectedProjectId.value = project.id;
+    localFolderPath.value = "";
+  } finally {
+    loading.value = false;
+  }
+}
+
 async function onUploadChange(info: UploadChangeParam) {
   if (info.file.status === "done") {
     await refreshAll();
@@ -153,22 +209,36 @@ onMounted(refreshAll);
 </script>
 
 <template>
+  <a-config-provider :theme="appTheme">
   <a-layout class="app-shell">
-    <a-layout-sider class="side" width="260">
+    <a-config-provider :theme="sideTheme">
+    <a-layout-sider class="side" width="280">
       <div class="brand">
         <FileSearchOutlined />
         <span>AI Code Review</span>
       </div>
 
-      <a-space direction="vertical" class="side-stack" :size="16">
-        <section>
-          <h2>Project</h2>
+      <div class="side-stack">
+        <section class="side-card">
+          <h2><FolderOpenOutlined /> Project</h2>
           <a-upload v-bind="uploadProps" @change="onUploadChange">
             <a-button block>
               <CloudUploadOutlined />
               Upload ZIP
             </a-button>
           </a-upload>
+          <a-input-search
+            v-model:value="localFolderPath"
+            placeholder="Local folder path"
+            enter-button="Register"
+            @search="registerLocalPath"
+          />
+          <a-textarea
+            v-model:value="localFilePaths"
+            placeholder="File paths, one per line"
+            :rows="3"
+          />
+          <a-button block @click="registerFiles">Register Files</a-button>
           <a-select
             v-model:value="selectedProjectId"
             class="full"
@@ -177,10 +247,12 @@ onMounted(refreshAll);
           />
         </section>
 
-        <section>
-          <h2>Rules</h2>
-          <a-checkbox v-model:checked="enableCppcheck">Cppcheck</a-checkbox>
-          <a-checkbox v-model:checked="enableClang">Clang Analyzer</a-checkbox>
+        <section class="side-card">
+          <h2><SafetyCertificateOutlined /> Rules</h2>
+          <div class="checkbox-row">
+            <a-checkbox v-model:checked="enableCppcheck">Cppcheck</a-checkbox>
+            <a-checkbox v-model:checked="enableClang">Clang Analyzer</a-checkbox>
+          </div>
           <a-select v-model:value="cppcheckLevel" class="full">
             <a-select-option value="all">all</a-select-option>
             <a-select-option value="warning">warning</a-select-option>
@@ -194,8 +266,8 @@ onMounted(refreshAll);
           </a-button>
         </section>
 
-        <section>
-          <h2>Task</h2>
+        <section class="side-card">
+          <h2><ScheduleOutlined /> Task</h2>
           <a-select
             v-model:value="selectedTaskId"
             class="full"
@@ -208,8 +280,9 @@ onMounted(refreshAll);
             Run Again
           </a-button>
         </section>
-      </a-space>
+      </div>
     </a-layout-sider>
+    </a-config-provider>
 
     <a-layout-content class="workspace">
       <header class="topbar">
@@ -232,8 +305,12 @@ onMounted(refreshAll);
                 :data-source="issues"
                 :row-key="(record: ReviewIssue) => record.id"
                 :pagination="{ pageSize: 8 }"
+                :locale="{ emptyText: 'No issues yet. Register a project and run a task to see results here.' }"
                 size="middle"
-                @row="(record: ReviewIssue) => ({ onClick: () => (activeIssue = record) })"
+                @row="(record: ReviewIssue) => ({
+                  onClick: () => (activeIssue = record),
+                  class: activeIssue?.id === record.id ? 'row-active' : ''
+                })"
               >
                 <template #bodyCell="{ column, record }">
                   <template v-if="column.key === 'risk_level'">
@@ -305,7 +382,11 @@ onMounted(refreshAll);
         </a-tab-pane>
 
         <a-tab-pane key="reports" tab="Reports">
-          <a-list :data-source="reports" bordered>
+          <a-list
+            :data-source="reports"
+            bordered
+            :locale="{ emptyText: 'No reports yet. Run a review task to generate one.' }"
+          >
             <template #renderItem="{ item }">
               <a-list-item>
                 <a-list-item-meta :title="item.summary" :description="item.created_at" />
@@ -320,4 +401,5 @@ onMounted(refreshAll);
       </a-tabs>
     </a-layout-content>
   </a-layout>
+  </a-config-provider>
 </template>
