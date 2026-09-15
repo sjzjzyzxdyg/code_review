@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
-import { theme as antTheme } from "ant-design-vue";
 import {
   CloudUploadOutlined,
   FileSearchOutlined,
@@ -47,15 +46,6 @@ const appTheme = {
   token: {
     colorPrimary: accentColor,
     borderRadius: 8
-  }
-};
-const sideTheme = {
-  algorithm: antTheme.darkAlgorithm,
-  token: {
-    colorPrimary: accentColor,
-    borderRadius: 8,
-    colorBgContainer: "#1b2333",
-    colorBgLayout: "#141a29"
   }
 };
 
@@ -210,19 +200,20 @@ onMounted(refreshAll);
 
 <template>
   <a-config-provider :theme="appTheme">
-  <a-layout class="app-shell">
-    <a-config-provider :theme="sideTheme">
-    <a-layout-sider class="side" width="280">
+  <div class="app-shell">
+    <header class="appbar">
       <div class="brand">
         <FileSearchOutlined />
         <span>AI Code Review</span>
       </div>
+    </header>
 
-      <div class="side-stack">
-        <section class="side-card">
-          <h2><FolderOpenOutlined /> Project</h2>
+    <section class="control-panel">
+      <div class="control-col">
+        <h3><FolderOpenOutlined /> Project</h3>
+        <div class="control-row">
           <a-upload v-bind="uploadProps" @change="onUploadChange">
-            <a-button block>
+            <a-button>
               <CloudUploadOutlined />
               Upload ZIP
             </a-button>
@@ -231,60 +222,69 @@ onMounted(refreshAll);
             v-model:value="localFolderPath"
             placeholder="Local folder path"
             enter-button="Register"
+            class="control-input"
             @search="registerLocalPath"
           />
-          <a-textarea
-            v-model:value="localFilePaths"
-            placeholder="File paths, one per line"
-            :rows="3"
-          />
-          <a-button block @click="registerFiles">Register Files</a-button>
           <a-select
             v-model:value="selectedProjectId"
-            class="full"
+            class="control-input"
             :options="projectOptions"
             placeholder="Select project"
           />
-        </section>
+        </div>
+        <div class="control-row">
+          <a-textarea
+            v-model:value="localFilePaths"
+            placeholder="File paths, one per line"
+            :autosize="{ minRows: 1, maxRows: 3 }"
+            class="control-input-wide"
+          />
+          <a-button @click="registerFiles">Register Files</a-button>
+        </div>
+      </div>
 
-        <section class="side-card">
-          <h2><SafetyCertificateOutlined /> Rules</h2>
-          <div class="checkbox-row">
-            <a-checkbox v-model:checked="enableCppcheck">Cppcheck</a-checkbox>
-            <a-checkbox v-model:checked="enableClang">Clang Analyzer</a-checkbox>
-          </div>
-          <a-select v-model:value="cppcheckLevel" class="full">
+      <a-divider type="vertical" class="control-divider" />
+
+      <div class="control-col">
+        <h3><SafetyCertificateOutlined /> Rules</h3>
+        <div class="control-row">
+          <a-checkbox v-model:checked="enableCppcheck">Cppcheck</a-checkbox>
+          <a-checkbox v-model:checked="enableClang">Clang Analyzer</a-checkbox>
+          <a-select v-model:value="cppcheckLevel" class="control-input-sm">
             <a-select-option value="all">all</a-select-option>
             <a-select-option value="warning">warning</a-select-option>
             <a-select-option value="style">style</a-select-option>
             <a-select-option value="performance">performance</a-select-option>
           </a-select>
-          <a-input v-model:value="scanScope" addon-before="Scope" />
-          <a-button type="primary" block @click="submitTask(true)">
+          <a-input v-model:value="scanScope" addon-before="Scope" class="control-input-sm" />
+          <a-button type="primary" @click="submitTask(true)">
             <PlayCircleOutlined />
             Create & Run
           </a-button>
-        </section>
+        </div>
+      </div>
 
-        <section class="side-card">
-          <h2><ScheduleOutlined /> Task</h2>
+      <a-divider type="vertical" class="control-divider" />
+
+      <div class="control-col">
+        <h3><ScheduleOutlined /> Task</h3>
+        <div class="control-row">
           <a-select
             v-model:value="selectedTaskId"
-            class="full"
+            class="control-input"
             :options="taskOptions"
             placeholder="Select task"
             @change="refreshTaskData"
           />
-          <a-button block @click="rerunSelectedTask">
+          <a-button @click="rerunSelectedTask">
             <ReloadOutlined />
             Run Again
           </a-button>
-        </section>
+        </div>
       </div>
-    </a-layout-sider>
-    </a-config-provider>
+    </section>
 
-    <a-layout-content class="workspace">
+    <main class="workspace">
       <header class="topbar">
         <div>
           <h1>Review Console</h1>
@@ -399,7 +399,7 @@ onMounted(refreshAll);
           </a-list>
         </a-tab-pane>
       </a-tabs>
-    </a-layout-content>
-  </a-layout>
+    </main>
+  </div>
   </a-config-provider>
 </template>

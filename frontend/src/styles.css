@@ -20,20 +20,17 @@ body {
   min-height: 100vh;
 }
 
-/* ── Sidebar ─────────────────────────────────────────────────────────── */
+/* ── Top app bar ─────────────────────────────────────────────────────── */
 
-.side {
-  background: #141a29 !important;
-  padding: 20px 16px 28px;
+.appbar {
+  padding: 14px 32px;
+  background: #141a29;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  height: 40px;
-  margin-bottom: 20px;
-  padding: 0 4px;
   color: #f1f4fb;
   font-size: 17px;
   font-weight: 700;
@@ -44,40 +41,64 @@ body {
   font-size: 20px;
 }
 
-.side-stack {
+/* ── Control panel (Project / Rules / Task) ─────────────────────────── */
+
+.control-panel {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 18px 32px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f5;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+.control-col {
   display: grid;
-  gap: 16px;
+  gap: 8px;
+  flex: 1 1 260px;
+  min-width: 0;
 }
 
-.side-card {
-  display: grid;
-  gap: 10px;
-  padding: 14px;
-  background: #1b2333;
-  border: 1px solid #2a3348;
-  border-radius: 10px;
+.control-divider {
+  height: auto;
+  align-self: stretch;
+  margin: 0;
 }
 
-.full {
-  width: 100%;
-}
-
-.side-card h2 {
+.control-col h3 {
   display: flex;
   align-items: center;
-  gap: 7px;
-  margin: 0 0 2px;
-  color: #a5b4d3;
+  gap: 6px;
+  margin: 0;
+  color: #64748b;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-.checkbox-row {
+.control-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 16px;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-input {
+  width: 200px;
+  max-width: 100%;
+}
+
+.control-input-sm {
+  width: 130px;
+  max-width: 100%;
+}
+
+.control-input-wide {
+  flex: 1 1 auto;
+  min-width: 180px;
 }
 
 /* ── Main workspace ──────────────────────────────────────────────────── */
@@ -233,14 +254,20 @@ body {
 }
 
 @media (max-width: 980px) {
-  .app-shell {
-    display: block;
+  .appbar {
+    padding: 12px 20px;
   }
 
-  .side {
-    width: 100% !important;
-    max-width: none !important;
-    min-width: 0 !important;
+  .control-panel {
+    padding: 16px 20px;
+  }
+
+  .control-col {
+    flex-basis: 100%;
+  }
+
+  .control-divider {
+    display: none;
   }
 
   .content-grid {
