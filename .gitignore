@@ -10,6 +10,7 @@ venv/
 
 storage/
 backend/storage/
+backend/*.plist
 
 node_modules/
 dist/

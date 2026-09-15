@@ -65,6 +65,23 @@ const client = axios.create({
   baseURL: "/api/v1"
 });
 
+// Only set when CODE_REVIEW_API_KEY is enabled on the backend (shared/intranet
+// deployments); local single-user usage needs no configuration.
+const apiKey = import.meta.env.VITE_API_KEY;
+if (apiKey) {
+  client.defaults.headers.common["X-API-Key"] = apiKey;
+}
+
+export async function registerLocalProject(folderPath: string): Promise<Project> {
+  const response = await client.post<Project>("/projects/from-path", { path: folderPath });
+  return response.data;
+}
+
+export async function registerLocalFiles(filePaths: string[]): Promise<Project> {
+  const response = await client.post<Project>("/projects/from-files", { paths: filePaths });
+  return response.data;
+}
+
 export async function uploadProject(file: File): Promise<Project> {
   const body = new FormData();
   body.append("file", file);

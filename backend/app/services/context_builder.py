@@ -57,5 +57,4 @@ class ContextBuilder:
             for number in range(start, end)
         )
 
-
 context_builder = ContextBuilder()

@@ -24,6 +24,14 @@ class ProjectRead(BaseModel):
     updated_at: datetime
 
 
+class ProjectCreateFromPath(BaseModel):
+    path: str = Field(min_length=1)
+
+
+class ProjectCreateFromFiles(BaseModel):
+    paths: list[str] = Field(min_length=1)
+
+
 class ProjectTreeNode(BaseModel):
     name: str
     path: str

@@ -1,8 +1,12 @@
+import logging
 import subprocess
 from pathlib import Path
 
+from app.core.config import settings
 from app.tools.cppcheck_tool import StaticAnalysisToolUnavailable
 from app.tools.structured_tools import make_structured_tool
+
+logger = logging.getLogger(__name__)
 
 
 class ClangAnalyzerTool:
@@ -15,19 +19,30 @@ class ClangAnalyzerTool:
             func=lambda project_path: self.run(Path(project_path)),
         )
 
-    def run(self, project_path: Path) -> list[dict]:
+    def run(self, project_path: Path, include_paths: list[Path] | None = None) -> list[dict]:
         analyzer = self._resolve_analyzer()
         findings: list[dict] = []
+        inc_flags: list[str] = []
+        for inc in (include_paths or []):
+            inc_flags.extend(["-I", str(inc)])
         for source in self._iter_sources(project_path):
-            command = [analyzer, "--analyze", str(source)]
-            result = subprocess.run(
-                command,
-                capture_output=True,
-                text=True,
-                check=False,
-                encoding="utf-8",
-                errors="replace",
-            )
+            command = [analyzer, "--analyze", *inc_flags, str(source)]
+            try:
+                result = subprocess.run(
+                    command,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                    encoding="utf-8",
+                    errors="replace",
+                    timeout=settings.tool_timeout_seconds,
+                )
+            except subprocess.TimeoutExpired:
+                logger.warning(
+                    "clang --analyze timed out after %ss on %s",
+                    settings.tool_timeout_seconds, source,
+                )
+                continue
             findings.extend(self._parse_text_output(result.stderr, source))
         return findings
 
@@ -41,9 +56,10 @@ class ClangAnalyzerTool:
                     check=False,
                     encoding="utf-8",
                     errors="replace",
+                    timeout=10,
                 )
                 return candidate
-            except FileNotFoundError:
+            except (FileNotFoundError, subprocess.TimeoutExpired):
                 continue
         raise StaticAnalysisToolUnavailable(
             "Clang Static Analyzer is not installed or not available in PATH."

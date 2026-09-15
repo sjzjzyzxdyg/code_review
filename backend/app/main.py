@@ -3,11 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.v1.router import api_router
 from app.core.config import settings
+from app.core.logging import configure_logging
 from app.core.storage import ensure_storage_dirs
 
 
 def create_app() -> FastAPI:
     ensure_storage_dirs()
+    configure_logging()
 
     app = FastAPI(
         title=settings.app_name,

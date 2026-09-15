@@ -44,6 +44,30 @@ GET  /api/v1/issues?task_id={task_id}
 GET  /api/v1/reports?task_id={task_id}
 ```
 
+## Sharing this service beyond a single local user
+
+By default this backend trusts every caller: `/projects/from-path` and
+`/projects/from-files` will register any path the server process can read,
+and there is no request authentication. That's fine for a single developer
+running it against their own machine, but if you deploy it so more than one
+person can reach it (e.g. shared on an internal network), set these first:
+
+```powershell
+# .env
+CODE_REVIEW_ALLOWED_PROJECT_ROOTS=["C:\\Users\\me\\repos"]
+CODE_REVIEW_API_KEY=some-long-random-string
+```
+
+- `CODE_REVIEW_ALLOWED_PROJECT_ROOTS`: JSON array of directories. Project
+  registration is rejected (403) for any path outside these roots. Empty
+  (default) allows any path — keep it empty only for trusted single-user use.
+- `CODE_REVIEW_API_KEY`: when set, every `/api/v1` request except `/health`
+  must send a matching `X-API-Key` header, or it's rejected with 401. Empty
+  (default) disables auth entirely.
+
+If you set `CODE_REVIEW_API_KEY`, also set `VITE_API_KEY` to the same value
+in `frontend/.env` so the UI sends the header automatically.
+
 ## Cppcheck
 
 The static analysis adapter calls `cppcheck` from `PATH`.

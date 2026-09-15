@@ -20,11 +20,7 @@ class ResultValidationAgent:
 
     JSON_BLOCK_PATTERN = re.compile(r"```(?:json)?\s*(\{.*?\})\s*```", re.DOTALL)
 
-    def validate(
-        self,
-        review_result,
-        call_chain: list[str] | None = None,
-    ) -> ValidatedReviewResult:
+    def validate(self, review_result) -> ValidatedReviewResult:
         review_result = self._coerce_to_dict(review_result)
         try:
             validated = ValidatedReviewResult.model_validate(review_result)
@@ -43,7 +39,7 @@ class ResultValidationAgent:
             }
             validated = ValidatedReviewResult.model_validate(repaired)
 
-        return self._filter_false_positive(validated, call_chain=call_chain or [])
+        return self._filter_false_positive(validated)
 
     def _coerce_to_dict(self, value) -> dict:
         if isinstance(value, dict):
@@ -86,26 +82,14 @@ class ResultValidationAgent:
                 fields[target] = raw_value.strip()
         return fields
 
-    def _filter_false_positive(
-        self,
-        result: ValidatedReviewResult,
-        call_chain: list[str] | None = None,
-    ) -> ValidatedReviewResult:
+    def _filter_false_positive(self, result: ValidatedReviewResult) -> ValidatedReviewResult:
         if result.confidence < 0.2:
             return result.model_copy(update={"is_valid": False})
 
-        benign_markers = ("false positive", "not exploitable", "intentional")
+        benign_markers = ("false positive", "not exploitable")
         searchable = f"{result.reason} {result.description}".lower()
         if any(marker in searchable for marker in benign_markers):
             return result.model_copy(update={"is_valid": False})
-
-        if call_chain:
-            all_good = all(fn.lower().startswith("good") for fn in call_chain)
-            if all_good:
-                suppressed_confidence = round(min(result.confidence * 0.35, 0.25), 2)
-                return result.model_copy(
-                    update={"is_valid": False, "confidence": suppressed_confidence}
-                )
 
         return result
 

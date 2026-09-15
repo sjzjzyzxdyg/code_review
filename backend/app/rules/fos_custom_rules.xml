@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+  Custom Cppcheck rules for FOS component coding standards.
+
+  Rule 1 (from standard §8): FOS components must not call abort/exit/signal.
+    Cppcheck has no built-in check for this; the prohibition is project-specific.
+    Regex matches any call expression: abort(...) / exit(...) / signal(...).
+
+  Rule 2 (from standard §17): Time-difference calculations must not use
+    FCLOCK_GET_MTIME_UPTONOW or FOS_GET_TICK — both return absolute timestamps
+    whose subtraction can silently wrap on UINT32 overflow.
+    Cppcheck has zero knowledge of these project-internal API names.
+-->
+<rules>
+  <rule version="1">
+    <pattern>\babort\s*\(|\bexit\s*\(|\bsignal\s*\(</pattern>
+    <id>fos-prohibited-api</id>
+    <severity>error</severity>
+    <summary>FOS components must not call abort()/exit()/signal(); use FOS error-handling interfaces instead.</summary>
+  </rule>
+
+  <rule version="1">
+    <pattern>\bFCLOCK_GET_MTIME_UPTONOW\s*\(|\bFOS_GET_TICK\s*\(</pattern>
+    <id>fos-prohibited-time-api</id>
+    <severity>error</severity>
+    <summary>Time-difference calculation must not use FCLOCK_GET_MTIME_UPTONOW or FOS_GET_TICK; use SSF relative-time interfaces (SSF_xx / UTF_xx) to avoid UINT32 overflow wrap-around.</summary>
+  </rule>
+</rules>

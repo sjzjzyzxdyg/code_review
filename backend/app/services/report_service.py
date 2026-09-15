@@ -5,18 +5,17 @@ from uuid import uuid4
 from fastapi import HTTPException, status
 
 from app.core.config import settings
+from app.core.db import Database, get_db
 from app.schemas.report import ReviewReportRead
 
 
 class ReportService:
-    def __init__(self) -> None:
-        self._reports: dict[str, ReviewReportRead] = {}
+    def __init__(self, db: Database | None = None) -> None:
+        self._db = db or get_db()
 
     def list_reports(self, task_id: str | None = None) -> list[ReviewReportRead]:
-        reports = list(self._reports.values())
-        if task_id is not None:
-            return [report for report in reports if report.task_id == task_id]
-        return reports
+        rows = self._db.list("reports", parent_id=task_id)
+        return [ReviewReportRead.model_validate(row) for row in rows]
 
     def create_report(
         self,
@@ -44,17 +43,20 @@ class ReportService:
             summary=summary,
             created_at=datetime.utcnow(),
         )
-        self._reports[report.id] = report
+        self._db.upsert(
+            "reports", report.id, task_id,
+            report.created_at.isoformat(), report.model_dump(mode="json"),
+        )
         return report
 
     def get_report(self, report_id: str) -> ReviewReportRead:
-        report = self._reports.get(report_id)
-        if report is None:
+        row = self._db.get("reports", report_id)
+        if row is None:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail="Review report not found",
             )
-        return report
+        return ReviewReportRead.model_validate(row)
 
 
 report_service = ReportService()

@@ -15,14 +15,34 @@ class Settings(BaseSettings):
     projects_dir: Path = Field(default=Path("storage/projects"))
     reports_dir: Path = Field(default=Path("storage/reports"))
     logs_dir: Path = Field(default=Path("storage/logs"))
+    database_path: Path = Field(default=Path("storage/app.db"))
 
     cors_origins: list[str] = ["http://localhost:5173", "http://127.0.0.1:5173"]
 
     llm_enabled: bool = False
     llm_api_key: str | None = None
     llm_base_url: str = "https://api.openai.com/v1"
-    llm_model: str = "gpt-4o-mini"
+    llm_model: str = "deepseek-v4-flash"
     llm_timeout_seconds: int = 30
+
+    # Hard cap on any external static-analysis subprocess (cppcheck/clang/...)
+    # so a pathological input can't hang a detection worker thread forever.
+    tool_timeout_seconds: int = 120
+
+    # Guardrails for uploaded zip archives.
+    max_upload_uncompressed_bytes: int = 500 * 1024 * 1024  # 500 MB
+    max_zip_compression_ratio: int = 100
+
+    # When non-empty, /projects/from-path and /projects/from-files only accept
+    # paths under one of these directories. Empty (default) keeps the current
+    # single-user local-tool behavior of allowing any local path.
+    allowed_project_roots: list[str] = []
+
+    # When set, every /api/v1 request (except /health) must send a matching
+    # `X-API-Key` header. Empty (default) keeps auth disabled for local use.
+    api_key: str | None = None
+
+    log_level: str = "INFO"
 
     model_config = SettingsConfigDict(
         env_file=".env",

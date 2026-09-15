@@ -3,26 +3,24 @@ from uuid import uuid4
 
 from fastapi import HTTPException, status
 
+from app.core.db import Database, get_db
 from app.schemas.issue import ReviewIssueRead
 
 
 class IssueService:
-    def __init__(self) -> None:
-        self._issues: dict[str, ReviewIssueRead] = {}
+    def __init__(self, db: Database | None = None) -> None:
+        self._db = db or get_db()
 
     def list_issues(self, task_id: str | None = None) -> list[ReviewIssueRead]:
-        issues = list(self._issues.values())
-        if task_id is not None:
-            return [issue for issue in issues if issue.task_id == task_id]
-        return issues
+        rows = self._db.list("issues", parent_id=task_id)
+        return [ReviewIssueRead.model_validate(row) for row in rows]
 
     def replace_task_issues(self, task_id: str, issues: list[ReviewIssueRead]) -> None:
-        self._issues = {
-            issue_id: issue
-            for issue_id, issue in self._issues.items()
-            if issue.task_id != task_id
-        }
-        self._issues.update({issue.id: issue for issue in issues})
+        rows = [
+            (issue.id, issue.created_at.isoformat(), issue.model_dump(mode="json"))
+            for issue in issues
+        ]
+        self._db.replace_children("issues", task_id, rows)
 
     def create_from_static_finding(
         self,
@@ -102,13 +100,13 @@ class IssueService:
         )
 
     def get_issue(self, issue_id: str) -> ReviewIssueRead:
-        issue = self._issues.get(issue_id)
-        if issue is None:
+        row = self._db.get("issues", issue_id)
+        if row is None:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail="Review issue not found",
             )
-        return issue
+        return ReviewIssueRead.model_validate(row)
 
     def _normalize_risk_level(self, severity: str) -> str:
         mapping = {

@@ -7,7 +7,6 @@ from pydantic import BaseModel, Field
 ReviewStatus = Literal[
     "created",
     "static_analyzing",
-    "context_building",
     "llm_reviewing",
     "result_validating",
     "report_generating",

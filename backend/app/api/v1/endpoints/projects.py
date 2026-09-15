@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, status
 
-from app.schemas.project import ProjectCreate, ProjectRead, ProjectTreeNode
+from app.schemas.project import ProjectCreate, ProjectCreateFromFiles, ProjectCreateFromPath, ProjectRead, ProjectTreeNode
 from app.services.project_service import project_service
 
 router = APIRouter()
@@ -14,6 +14,16 @@ def create_project(payload: ProjectCreate) -> ProjectRead:
 @router.post("/upload", response_model=ProjectRead, status_code=status.HTTP_201_CREATED)
 async def upload_project(file: UploadFile) -> ProjectRead:
     return await project_service.create_project_from_upload(file)
+
+
+@router.post("/from-path", response_model=ProjectRead, status_code=status.HTTP_201_CREATED)
+def register_local_project(payload: ProjectCreateFromPath) -> ProjectRead:
+    return project_service.create_project_from_path(payload)
+
+
+@router.post("/from-files", response_model=ProjectRead, status_code=status.HTTP_201_CREATED)
+def register_local_files(payload: ProjectCreateFromFiles) -> ProjectRead:
+    return project_service.create_project_from_files(payload)
 
 
 @router.get("", response_model=list[ProjectRead])
