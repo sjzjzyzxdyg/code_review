@@ -16,6 +16,7 @@ Why LLM instead of cppcheck/clang:
 
 import concurrent.futures
 import json
+import logging
 import re
 import time
 import urllib.error
@@ -27,6 +28,7 @@ from uuid import uuid4
 from app.core.config import settings
 from app.schemas.issue import ReviewIssueRead
 
+logger = logging.getLogger(__name__)
 
 _SOURCE_EXTENSIONS: frozenset[str] = frozenset({".c", ".cc", ".cpp", ".cxx"})
 _MAX_BUNDLE_CHARS = 24_000   # total chars across all files in one bundle
@@ -131,7 +133,10 @@ class TaintFlowAgent:
                 try:
                     issues.extend(fut.result())
                 except Exception:
-                    pass
+                    # A single group's LLM call failing (timeout, malformed
+                    # response, ...) previously vanished silently, making a
+                    # real miss indistinguishable from "nothing to find here".
+                    logger.exception("Taint-flow analysis failed for one file group; skipping it.")
         return issues
 
     def _analyze_group(self, files: list[Path], task_id: str) -> list[ReviewIssueRead]:
