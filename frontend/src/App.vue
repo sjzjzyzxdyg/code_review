@@ -27,6 +27,7 @@ import {
 } from "./api";
 
 const loading = ref(false);
+const registerMode = ref<"folder" | "zip" | "files">("folder");
 const localFolderPath = ref("");
 const localFilePaths = ref("");
 const selectedProjectId = ref<string>();
@@ -211,36 +212,51 @@ onMounted(refreshAll);
     <section class="control-panel">
       <div class="control-col">
         <h3><FolderOpenOutlined /> Project</h3>
-        <div class="control-row">
-          <a-upload v-bind="uploadProps" @change="onUploadChange">
-            <a-button>
-              <CloudUploadOutlined />
-              Upload ZIP
-            </a-button>
-          </a-upload>
+        <a-segmented
+          v-model:value="registerMode"
+          size="small"
+          :options="[
+            { label: 'Folder', value: 'folder' },
+            { label: 'Upload ZIP', value: 'zip' },
+            { label: 'File list', value: 'files' }
+          ]"
+        />
+
+        <div v-if="registerMode === 'folder'" class="control-row">
           <a-input-search
             v-model:value="localFolderPath"
             placeholder="Local folder path"
             enter-button="Register"
-            class="control-input"
+            class="control-input-wide"
             @search="registerLocalPath"
           />
-          <a-select
-            v-model:value="selectedProjectId"
-            class="control-input"
-            :options="projectOptions"
-            placeholder="Select project"
-          />
         </div>
-        <div class="control-row">
+
+        <div v-else-if="registerMode === 'zip'" class="control-row">
+          <a-upload v-bind="uploadProps" @change="onUploadChange">
+            <a-button>
+              <CloudUploadOutlined />
+              Choose ZIP file
+            </a-button>
+          </a-upload>
+        </div>
+
+        <div v-else class="control-row">
           <a-textarea
             v-model:value="localFilePaths"
             placeholder="File paths, one per line"
-            :autosize="{ minRows: 1, maxRows: 3 }"
+            :auto-size="{ minRows: 1, maxRows: 3 }"
             class="control-input-wide"
           />
-          <a-button @click="registerFiles">Register Files</a-button>
+          <a-button @click="registerFiles">Register</a-button>
         </div>
+
+        <a-select
+          v-model:value="selectedProjectId"
+          class="control-input-wide"
+          :options="projectOptions"
+          placeholder="Active project"
+        />
       </div>
 
       <a-divider type="vertical" class="control-divider" />
