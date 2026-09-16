@@ -43,11 +43,11 @@ Cross-file algorithm (two-pass):
   Pass 2 – for every call whose callee is in a *different* file, apply rules.
 """
 
-import json
 import subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from app.tools import clang_ast
 from app.tools.cppcheck_tool import StaticAnalysisToolUnavailable
 
 
@@ -110,15 +110,18 @@ class ClangCustomCheckerTool:
       operation in a callee defined in a different file.
     """
 
-    def run(self, project_path: Path) -> list[dict]:
-        clang    = _resolve_clang()
+    def run(self, project_path: Path, include_paths: list[Path] | None = None) -> list[dict]:
+        clang     = _resolve_clang()
+        inc_flags = tuple(f"-I{p}" for p in (include_paths or []))
         findings: list[dict] = []
         sources  = _iter_sources(project_path)
 
         # Collect ASTs once; reuse for both intra- and cross-file passes.
+        # (dump_ast is shared with cross_file_checker's own AST-based pass —
+        # see clang_ast.py for why that sharing matters.)
         all_asts: dict[Path, dict] = {}
         for source in sources:
-            ast = _dump_ast(clang, source)
+            ast = clang_ast.dump_ast(clang, str(source), inc_flags)
             if ast is None:
                 continue
             all_asts[source] = ast
@@ -703,55 +706,6 @@ def _resolve_clang() -> str:
     raise StaticAnalysisToolUnavailable(
         "Clang is not installed or not available in PATH."
     )
-
-
-def _dump_ast(clang: str, source: Path) -> dict | None:
-    try:
-        source_arg = str(source)
-        result = subprocess.run(
-            [clang, "-Xclang", "-ast-dump=json", "-fsyntax-only", "-w", source_arg],
-            capture_output=True,
-            text=True,
-            check=False,
-            encoding="utf-8",
-            errors="replace",
-            timeout=60,
-        )
-        stdout = result.stdout.strip()
-        if not stdout:
-            return None
-        return _drop_included_header_decls(json.loads(stdout), source_arg)
-    except (json.JSONDecodeError, subprocess.TimeoutExpired, OSError):
-        return None
-
-
-def _drop_included_header_decls(ast: dict, source_arg: str) -> dict:
-    """Discard top-level decls that came from an #included header.
-
-    ``-ast-dump=json`` dumps the *entire* translation unit, including every
-    declaration transitively pulled in by system/SDK headers — on Windows,
-    a single ``#include <stdio.h>`` can balloon this to 100+ MB of JSON (the
-    MSVC/Windows-SDK headers are huge). These checkers only look at the
-    user's own function bodies, so keep just the top-level decls whose
-    location is this file. Without this, holding one dump per file (as the
-    cross-file pass does) runs multi-gigabyte memory for even a small
-    project. Each top-level node's "loc"/"file" is only present when the
-    file changes from the previous node (clang's own JSON convention), so we
-    track the running "current file" while scanning in source order.
-    """
-    inner = ast.get("inner")
-    if not isinstance(inner, list):
-        return ast
-    kept = []
-    current_file = None
-    for node in inner:
-        file_ = (node.get("loc") or {}).get("file")
-        if file_:
-            current_file = file_
-        if current_file == source_arg:
-            kept.append(node)
-    ast["inner"] = kept
-    return ast
 
 
 def _iter_sources(project_path: Path) -> list[Path]:

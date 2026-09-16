@@ -19,6 +19,7 @@ from app.services.project_service import project_service
 from app.services.report_service import report_service
 from app.services.suppression_service import suppression_service
 from app.agents.taint_flow_agent import TaintFlowAgent
+from app.tools import clang_ast
 from app.tools.clang_analyzer_tool import ClangAnalyzerTool
 from app.tools.clang_custom_checker import ClangCustomCheckerTool
 from app.tools.cross_file_checker import CrossFileChecker
@@ -165,6 +166,12 @@ class ReviewService:
             else:
                 cppcheck_target_files, cached_cppcheck_findings, rescanned_rels = None, [], set()
 
+            # clang_custom_checker and cross_file_checker share one AST dump
+            # per file (see clang_ast.py); clear it so a file that changed
+            # since the last scan of this (or any) project never serves a
+            # stale dump.
+            clang_ast.clear_cache()
+
             # ── Phase 1: Detection (all tools in parallel) ────────────────────
             static_findings, taint_issues, fresh_cppcheck_findings = self._run_detection_parallel(
                 scan_path, task.rule_config, task_id, include_paths,
@@ -267,10 +274,10 @@ class ReviewService:
                 )
 
             pending["clang"]        = (pool.submit(self.clang_analyzer_tool.run, scan_path, include_paths), False)
-            pending["clang_custom"] = (pool.submit(self.clang_custom_checker.run, scan_path), False)
+            pending["clang_custom"] = (pool.submit(self.clang_custom_checker.run, scan_path, include_paths), False)
 
             if rule_config.get("cross_file", False):
-                pending["cross_file"] = (pool.submit(self.cross_file_checker.run, scan_path), False)
+                pending["cross_file"] = (pool.submit(self.cross_file_checker.run, scan_path, include_paths), False)
 
             pending["taint_flow"] = (pool.submit(self.taint_flow_agent.run, scan_path, task_id), False)
 

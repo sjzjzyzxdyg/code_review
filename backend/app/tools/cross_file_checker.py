@@ -24,10 +24,11 @@ cross-file rules:
   CWE134  cross-format-string     tainted input → printf format-string argument
 """
 
-import json
 import subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
+
+from app.tools import clang_ast
 
 from app.tools.cppcheck_tool import StaticAnalysisToolUnavailable
 
@@ -171,37 +172,24 @@ class _CallSite:
 class CrossFileChecker:
     """Interprocedural checker: detects bugs whose source and sink span two files."""
 
-    def run(self, project_path: Path) -> list[dict]:
+    def run(self, project_path: Path, include_paths: list[Path] | None = None) -> list[dict]:
         clang_bin = _resolve_clang()
         sources   = _iter_sources(project_path)
         if len(sources) < 2:
             return []
 
-        seen: set[Path] = set()
-        include_args: list[str] = []
-
-        def _add_inc(d: Path) -> None:
-            r = d.resolve()
-            if r not in seen:
-                seen.add(r)
-                include_args.append(f"-I{d}")
-
-        _add_inc(project_path)
-        for d in project_path.iterdir():
-            if d.is_dir():
-                _add_inc(d)
-        parent = project_path.parent
-        _add_inc(parent)
-        for d in parent.iterdir():
-            if d.is_dir():
-                _add_inc(d)
+        inc_flags = tuple(f"-I{p}" for p in (include_paths or []))
 
         # ── Pass 1 ────────────────────────────────────────────────────────────
         all_func_facts: dict[str, _FuncFacts] = {}
         all_call_sites: list[_CallSite]       = []
 
         for src in sources:
-            ast = _dump_ast(clang_bin, src, include_args)
+            # dump_ast is shared with clang_custom_checker's own AST-based
+            # pass — see clang_ast.py for why that sharing matters — so both
+            # checkers must request the same include flags for the same file
+            # to actually get a cache hit instead of a redundant clang call.
+            ast = clang_ast.dump_ast(clang_bin, str(src), inc_flags)
             if ast is None:
                 continue
             facts_list, sites = _analyse_file(src, ast)
@@ -1401,47 +1389,6 @@ def _resolve_clang() -> str:
         "Clang is not installed or not available in PATH. "
         "On Windows, install LLVM from https://releases.llvm.org/ or set LLVM_DIR."
     )
-
-
-def _dump_ast(clang_bin: str, source: Path, extra_args: list[str]) -> dict | None:
-    try:
-        source_arg = str(source)
-        result = subprocess.run(
-            [clang_bin, "-Xclang", "-ast-dump=json", "-fsyntax-only", "-w",
-             *extra_args, source_arg],
-            capture_output=True, text=True, check=False,
-            encoding="utf-8", errors="replace", timeout=60,
-        )
-        stdout = result.stdout.strip()
-        if not stdout:
-            return None
-        return _drop_included_header_decls(json.loads(stdout), source_arg)
-    except (json.JSONDecodeError, subprocess.TimeoutExpired, OSError):
-        return None
-
-
-def _drop_included_header_decls(ast: dict, source_arg: str) -> dict:
-    """Discard top-level decls that came from an #included header.
-
-    See clang_custom_checker._drop_included_header_decls for why: without
-    this, holding every file's full AST (headers included) for the
-    cross-file pass runs into gigabytes of memory on Windows, where the
-    MSVC/SDK headers pulled in by a plain #include <stdio.h> can be 100+ MB
-    of JSON on their own.
-    """
-    inner = ast.get("inner")
-    if not isinstance(inner, list):
-        return ast
-    kept = []
-    current_file = None
-    for node in inner:
-        file_ = (node.get("loc") or {}).get("file")
-        if file_:
-            current_file = file_
-        if current_file == source_arg:
-            kept.append(node)
-    ast["inner"] = kept
-    return ast
 
 
 def _iter_sources(project_path: Path) -> list[Path]:
