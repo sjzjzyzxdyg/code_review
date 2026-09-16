@@ -707,8 +707,9 @@ def _resolve_clang() -> str:
 
 def _dump_ast(clang: str, source: Path) -> dict | None:
     try:
+        source_arg = str(source)
         result = subprocess.run(
-            [clang, "-Xclang", "-ast-dump=json", "-fsyntax-only", "-w", str(source)],
+            [clang, "-Xclang", "-ast-dump=json", "-fsyntax-only", "-w", source_arg],
             capture_output=True,
             text=True,
             check=False,
@@ -717,9 +718,40 @@ def _dump_ast(clang: str, source: Path) -> dict | None:
             timeout=60,
         )
         stdout = result.stdout.strip()
-        return json.loads(stdout) if stdout else None
+        if not stdout:
+            return None
+        return _drop_included_header_decls(json.loads(stdout), source_arg)
     except (json.JSONDecodeError, subprocess.TimeoutExpired, OSError):
         return None
+
+
+def _drop_included_header_decls(ast: dict, source_arg: str) -> dict:
+    """Discard top-level decls that came from an #included header.
+
+    ``-ast-dump=json`` dumps the *entire* translation unit, including every
+    declaration transitively pulled in by system/SDK headers — on Windows,
+    a single ``#include <stdio.h>`` can balloon this to 100+ MB of JSON (the
+    MSVC/Windows-SDK headers are huge). These checkers only look at the
+    user's own function bodies, so keep just the top-level decls whose
+    location is this file. Without this, holding one dump per file (as the
+    cross-file pass does) runs multi-gigabyte memory for even a small
+    project. Each top-level node's "loc"/"file" is only present when the
+    file changes from the previous node (clang's own JSON convention), so we
+    track the running "current file" while scanning in source order.
+    """
+    inner = ast.get("inner")
+    if not isinstance(inner, list):
+        return ast
+    kept = []
+    current_file = None
+    for node in inner:
+        file_ = (node.get("loc") or {}).get("file")
+        if file_:
+            current_file = file_
+        if current_file == source_arg:
+            kept.append(node)
+    ast["inner"] = kept
+    return ast
 
 
 def _iter_sources(project_path: Path) -> list[Path]:

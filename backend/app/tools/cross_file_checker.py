@@ -1405,16 +1405,43 @@ def _resolve_clang() -> str:
 
 def _dump_ast(clang_bin: str, source: Path, extra_args: list[str]) -> dict | None:
     try:
+        source_arg = str(source)
         result = subprocess.run(
             [clang_bin, "-Xclang", "-ast-dump=json", "-fsyntax-only", "-w",
-             *extra_args, str(source)],
+             *extra_args, source_arg],
             capture_output=True, text=True, check=False,
             encoding="utf-8", errors="replace", timeout=60,
         )
         stdout = result.stdout.strip()
-        return json.loads(stdout) if stdout else None
+        if not stdout:
+            return None
+        return _drop_included_header_decls(json.loads(stdout), source_arg)
     except (json.JSONDecodeError, subprocess.TimeoutExpired, OSError):
         return None
+
+
+def _drop_included_header_decls(ast: dict, source_arg: str) -> dict:
+    """Discard top-level decls that came from an #included header.
+
+    See clang_custom_checker._drop_included_header_decls for why: without
+    this, holding every file's full AST (headers included) for the
+    cross-file pass runs into gigabytes of memory on Windows, where the
+    MSVC/SDK headers pulled in by a plain #include <stdio.h> can be 100+ MB
+    of JSON on their own.
+    """
+    inner = ast.get("inner")
+    if not isinstance(inner, list):
+        return ast
+    kept = []
+    current_file = None
+    for node in inner:
+        file_ = (node.get("loc") or {}).get("file")
+        if file_:
+            current_file = file_
+        if current_file == source_arg:
+            kept.append(node)
+    ast["inner"] = kept
+    return ast
 
 
 def _iter_sources(project_path: Path) -> list[Path]:
