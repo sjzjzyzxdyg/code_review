@@ -23,12 +23,46 @@ Default API docs:
 - Upload project archives. ZIP files are extracted into `storage/projects/{project_id}/source`.
 - Parse project file trees.
 - Create review tasks.
-- Run the review pipeline:
-  - static analysis
-  - issue-level context building
-  - deterministic LLMReviewAgent placeholder
-  - Pydantic result validation
-  - Markdown and JSON report generation
+- Run the review pipeline, orchestrated as a LangGraph state graph
+  (`services/review_graph.py`):
+
+  ```mermaid
+  graph TD;
+    START([start]) --> prepare
+    prepare --> static_detect
+    prepare --> llm_detect
+    static_detect --> fuse
+    llm_detect --> fuse
+    fuse -.single-path clusters.-> review
+    fuse -.nothing to review.-> build_issues
+    review --> build_issues
+    build_issues --> report
+    report --> END([end])
+  ```
+
+  `static_detect` and `llm_detect` run concurrently, and `fuse` waits for
+  both. The conditional edge skips the review agent entirely when there is
+  nothing to verify (e.g. the LLM is disabled).
+
+  1. **Detection, two paths in parallel.** The static path runs Cppcheck,
+     the Clang Static Analyzer, the Clang-AST custom checker and the
+     cross-file checker. The LLM path runs `SemanticAuditAgent`, which audits
+     function-level slices along the call graph.
+  2. **Fusion** (`services/fusion.py`). Findings are mapped to CWEs; findings
+     with no CWE are reported as code quality. Security findings are
+     clustered by file, CWE category and nearby line. Clusters found by both
+     paths are accepted (`consensus`). Clusters found by one path go to the
+     review agent.
+  3. **Review.** `LLMReviewAgent` verifies single-path clusters with tools
+     (read code, AST context, call chain, find callers), up to
+     `CODE_REVIEW_LLM_MAX_REVIEWS`. Clusters over the budget keep their
+     detector verdict and are never dropped.
+  4. Pydantic result validation, issue context (snippet, AST summary, call
+     chain), then Markdown and JSON report generation.
+- Optional detectors, enabled through `rule_config`: `cross_file` (off by
+  default), `taint_flow` (the older split-file taint prompt), and
+  `semantic_rules` (project-specific comment/ccid rules).
+- Evaluation on Juliet with held-out split and ablations: see `eval/README.md`.
 - List issues and reports by task ID.
 
 ## Useful API Calls

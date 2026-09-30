@@ -1,0 +1,4930 @@
+{
+ "dataset": "juliet-heldout",
+ "sanitized": true,
+ "detectors": [
+  "cppcheck",
+  "clang",
+  "clang_custom",
+  "cross_file"
+ ],
+ "tool_versions": {
+  "cppcheck": "Cppcheck 2.13.0",
+  "clang": "Ubuntu clang version 18.1.3 (1ubuntu1)"
+ },
+ "findings": [
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t002x.c",
+   "line": 31,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t002x.c",
+   "line": 61,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_23911629",
+   "file_path": "src/t002x.c",
+   "line": 44,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_31085322",
+   "file_path": "src/t002x.c",
+   "line": 72,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_23911629",
+   "file_path": "src/t003a.c",
+   "line": 35,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_31085322",
+   "file_path": "src/t003a.c",
+   "line": 53,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t003b.c",
+   "line": 32,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t003b.c",
+   "line": 49,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t004x.c",
+   "line": 31,
+   "column": 40
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t004x.c",
+   "line": 32,
+   "column": 40
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t004x.c",
+   "line": 54,
+   "column": 40
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t004x.c",
+   "line": 55,
+   "column": 40
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'fn_23911629' can be declared as pointer to const",
+   "file_path": "src/t004x.c",
+   "line": 32,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t004x.c",
+   "line": 38,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'fn_31085322' can be declared as pointer to const",
+   "file_path": "src/t004x.c",
+   "line": 54,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t004x.c",
+   "line": 61,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'fn_23911629' is assigned a value that is never used.",
+   "file_path": "src/t004x.c",
+   "line": 32,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'fn_31085322' is assigned a value that is never used.",
+   "file_path": "src/t004x.c",
+   "line": 54,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t005x.c",
+   "line": 32,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t005x.c",
+   "line": 33,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t005x.c",
+   "line": 60,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t005x.c",
+   "line": 61,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t005x.c",
+   "line": 40,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t005x.c",
+   "line": 67,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'fn_23911629' can be declared as pointer to const",
+   "file_path": "src/t005x.c",
+   "line": 33,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'fn_31085322' can be declared as pointer to const",
+   "file_path": "src/t005x.c",
+   "line": 60,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'fn_23911629' is assigned a value that is never used.",
+   "file_path": "src/t005x.c",
+   "line": 33,
+   "column": 24
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'fn_31085322' is assigned a value that is never used.",
+   "file_path": "src/t005x.c",
+   "line": 60,
+   "column": 24
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_23911629",
+   "file_path": "src/t006a.c",
+   "line": 30,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_31085322",
+   "file_path": "src/t006a.c",
+   "line": 49,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_23911629",
+   "file_path": "src/t007a.c",
+   "line": 28,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_31085322",
+   "file_path": "src/t007a.c",
+   "line": 46,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t007e.c",
+   "line": 26,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t007e.c",
+   "line": 47,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t008a.c",
+   "line": 29,
+   "column": 40
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t008a.c",
+   "line": 30,
+   "column": 40
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t008a.c",
+   "line": 48,
+   "column": 40
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t008a.c",
+   "line": 49,
+   "column": 40
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'fn_23911629' can be declared as pointer to const",
+   "file_path": "src/t008a.c",
+   "line": 30,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'fn_31085322' can be declared as pointer to const",
+   "file_path": "src/t008a.c",
+   "line": 48,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'fn_23911629' is assigned a value that is never used.",
+   "file_path": "src/t008a.c",
+   "line": 30,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'fn_31085322' is assigned a value that is never used.",
+   "file_path": "src/t008a.c",
+   "line": 48,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_23911629",
+   "file_path": "src/t009x.cpp",
+   "line": 28,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_23911629",
+   "file_path": "src/t009x.cpp",
+   "line": 59,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedVariable",
+   "severity": "style",
+   "message": "Unused variable: fn_31085322",
+   "file_path": "src/t009x.cpp",
+   "line": 83,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unusedStructMember",
+   "severity": "style",
+   "message": "struct member '_charVoid::voidThird' is never used.",
+   "file_path": "src/t010x.c",
+   "line": 29,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t013a.cpp",
+   "line": 43,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t013a.cpp",
+   "line": 67,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t013b.cpp",
+   "line": 39,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t013b.cpp",
+   "line": 62,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t014x.c",
+   "line": 37,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t014x.c",
+   "line": 63,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "memleak",
+   "severity": "error",
+   "message": "Memory leak: structCharVoid",
+   "file_path": "src/t016x.c",
+   "line": 49,
+   "column": 5
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "memleak",
+   "severity": "error",
+   "message": "Memory leak: structCharVoid",
+   "file_path": "src/t016x.c",
+   "line": 78,
+   "column": 5
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "memleak",
+   "severity": "error",
+   "message": "Memory leak: structCharVoid",
+   "file_path": "src/t016x.c",
+   "line": 98,
+   "column": 5
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t016x.c",
+   "line": 35,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t016x.c",
+   "line": 59,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t016x.c",
+   "line": 84,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t017b.cpp",
+   "line": 35,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariable",
+   "severity": "style",
+   "message": "Variable 'source' can be declared as const array",
+   "file_path": "src/t017b.cpp",
+   "line": 53,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'dest[50-1]' is assigned a value that is never used.",
+   "file_path": "src/t019c.cpp",
+   "line": 34,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'dest[50-1]' is assigned a value that is never used.",
+   "file_path": "src/t019c.cpp",
+   "line": 51,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t020a.cpp",
+   "line": 38,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t020a.cpp",
+   "line": 65,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t021a.cpp",
+   "line": 91,
+   "column": 41
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t021a.cpp",
+   "line": 98,
+   "column": 46
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t021a.cpp",
+   "line": 196,
+   "column": 41
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t021a.cpp",
+   "line": 203,
+   "column": 46
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataVector' should be passed by const reference.",
+   "file_path": "src/t021b.cpp",
+   "line": 32,
+   "column": 33
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataVector' should be passed by const reference.",
+   "file_path": "src/t021b.cpp",
+   "line": 45,
+   "column": 33
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataVector' should be passed by const reference.",
+   "file_path": "src/t021b.cpp",
+   "line": 53,
+   "column": 33
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t021b.cpp",
+   "line": 35,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t021b.cpp",
+   "line": 47,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t021b.cpp",
+   "line": 55,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'environment' can be declared as pointer to const",
+   "file_path": "src/t022x.c",
+   "line": 56,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'environment' can be declared as pointer to const",
+   "file_path": "src/t022x.c",
+   "line": 99,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t023b.cpp",
+   "line": 32,
+   "column": 31
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t023b.cpp",
+   "line": 45,
+   "column": 31
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t023b.cpp",
+   "line": 53,
+   "column": 31
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t023b.cpp",
+   "line": 35,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t023b.cpp",
+   "line": 47,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t023b.cpp",
+   "line": 55,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t025x.c",
+   "line": 58,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t025x.c",
+   "line": 78,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t025x.c",
+   "line": 117,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t025x.c",
+   "line": 58,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t025x.c",
+   "line": 78,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t025x.c",
+   "line": 117,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'environment' can be declared as pointer to const",
+   "file_path": "src/t027b.c",
+   "line": 40,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'environment' can be declared as pointer to const",
+   "file_path": "src/t027b.c",
+   "line": 69,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'environment' can be declared as pointer to const",
+   "file_path": "src/t028x.c",
+   "line": 40,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'environment' can be declared as pointer to const",
+   "file_path": "src/t028x.c",
+   "line": 109,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t031b.cpp",
+   "line": 28,
+   "column": 29
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t031b.cpp",
+   "line": 44,
+   "column": 29
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t031b.cpp",
+   "line": 55,
+   "column": 29
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t034x.c",
+   "line": 328,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t035x.c",
+   "line": 38,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t035x.c",
+   "line": 63,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t035x.c",
+   "line": 84,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'data>0' is always true",
+   "file_path": "src/t038x.c",
+   "line": 39,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'data>0' is always true",
+   "file_path": "src/t038x.c",
+   "line": 70,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'data>0' is always true",
+   "file_path": "src/t038x.c",
+   "line": 99,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'data>0' is always true",
+   "file_path": "src/t038x.c",
+   "line": 133,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'data>0' is always true",
+   "file_path": "src/t038x.c",
+   "line": 155,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "The comparison 'STATIC_CONST_FIVE == 5' is always true.",
+   "file_path": "src/t038x.c",
+   "line": 32,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "The comparison 'STATIC_CONST_FIVE == 5' is always true.",
+   "file_path": "src/t038x.c",
+   "line": 37,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "The comparison 'STATIC_CONST_FIVE == 5' is always true.",
+   "file_path": "src/t038x.c",
+   "line": 58,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "The comparison 'STATIC_CONST_FIVE != 5' is always false.",
+   "file_path": "src/t038x.c",
+   "line": 63,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "The comparison 'STATIC_CONST_FIVE == 5' is always true.",
+   "file_path": "src/t038x.c",
+   "line": 92,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "The comparison 'STATIC_CONST_FIVE == 5' is always true.",
+   "file_path": "src/t038x.c",
+   "line": 97,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "The comparison 'STATIC_CONST_FIVE != 5' is always false.",
+   "file_path": "src/t038x.c",
+   "line": 121,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "The comparison 'STATIC_CONST_FIVE == 5' is always true.",
+   "file_path": "src/t038x.c",
+   "line": 131,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "The comparison 'STATIC_CONST_FIVE == 5' is always true.",
+   "file_path": "src/t038x.c",
+   "line": 148,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "The comparison 'STATIC_CONST_FIVE == 5' is always true.",
+   "file_path": "src/t038x.c",
+   "line": 153,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "integerOverflow",
+   "severity": "error",
+   "message": "Signed integer overflow for expression 'data*2'.",
+   "file_path": "src/t038x.c",
+   "line": 42,
+   "column": 31
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'data<0' is always true",
+   "file_path": "src/t044x.c",
+   "line": 124,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'data<0' is always true",
+   "file_path": "src/t044x.c",
+   "line": 145,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t045x.c",
+   "line": 49,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t045x.c",
+   "line": 108,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t045x.c",
+   "line": 129,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t045x.c",
+   "line": 188,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t045x.c",
+   "line": 215,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t045x.c",
+   "line": 274,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t045x.c",
+   "line": 296,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t045x.c",
+   "line": 306,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t045x.c",
+   "line": 323,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t045x.c",
+   "line": 328,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "redundantInitialization",
+   "severity": "style",
+   "message": "Redundant initialization for 'data'. The initialized value is overwritten before it is read.",
+   "file_path": "src/t048x.c",
+   "line": 32,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "redundantInitialization",
+   "severity": "style",
+   "message": "Redundant initialization for 'data'. The initialized value is overwritten before it is read.",
+   "file_path": "src/t048x.c",
+   "line": 61,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "redundantInitialization",
+   "severity": "style",
+   "message": "Redundant initialization for 'data'. The initialized value is overwritten before it is read.",
+   "file_path": "src/t048x.c",
+   "line": 86,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t048x.c",
+   "line": 30,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t048x.c",
+   "line": 36,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t048x.c",
+   "line": 59,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t048x.c",
+   "line": 65,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t048x.c",
+   "line": 84,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t048x.c",
+   "line": 90,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'staticFive==5' is always true",
+   "file_path": "src/t049x.c",
+   "line": 31,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'staticFive==5' is always true",
+   "file_path": "src/t049x.c",
+   "line": 36,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'staticFive==5' is always true",
+   "file_path": "src/t049x.c",
+   "line": 56,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'staticFive!=5' is always false",
+   "file_path": "src/t049x.c",
+   "line": 61,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'staticFive==5' is always true",
+   "file_path": "src/t049x.c",
+   "line": 87,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'staticFive==5' is always true",
+   "file_path": "src/t049x.c",
+   "line": 92,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'staticFive!=5' is always false",
+   "file_path": "src/t049x.c",
+   "line": 113,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'staticFive==5' is always true",
+   "file_path": "src/t049x.c",
+   "line": 123,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'staticFive==5' is always true",
+   "file_path": "src/t049x.c",
+   "line": 139,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'staticFive==5' is always true",
+   "file_path": "src/t049x.c",
+   "line": 144,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t050x.c",
+   "line": 31,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t050x.c",
+   "line": 87,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t050x.c",
+   "line": 139,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'data>0' is always false",
+   "file_path": "src/t050x.c",
+   "line": 64,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'data>0' is always false",
+   "file_path": "src/t050x.c",
+   "line": 90,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'dataPtr' can be declared as pointer to const",
+   "file_path": "src/t051b.c",
+   "line": 29,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'dataPtr' can be declared as pointer to const",
+   "file_path": "src/t051b.c",
+   "line": 47,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'dataPtr' can be declared as pointer to const",
+   "file_path": "src/t051b.c",
+   "line": 61,
+   "column": 13
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t055x.c",
+   "line": 27,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t055x.c",
+   "line": 32,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t055x.c",
+   "line": 49,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t055x.c",
+   "line": 54,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t055x.c",
+   "line": 79,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t055x.c",
+   "line": 84,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t055x.c",
+   "line": 104,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t055x.c",
+   "line": 114,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t055x.c",
+   "line": 127,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t055x.c",
+   "line": 132,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t056x.c",
+   "line": 32,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t056x.c",
+   "line": 84,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t056x.c",
+   "line": 132,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t057x.c",
+   "line": 132,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t058a.cpp",
+   "line": 88,
+   "column": 39
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t058a.cpp",
+   "line": 195,
+   "column": 39
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t058b.cpp",
+   "line": 28,
+   "column": 28
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t058b.cpp",
+   "line": 41,
+   "column": 28
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t058b.cpp",
+   "line": 49,
+   "column": 28
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t059x.c",
+   "line": 138,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t061x.c",
+   "line": 108,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t061x.c",
+   "line": 128,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "memleak",
+   "severity": "error",
+   "message": "Memory leak: data",
+   "file_path": "src/t061x.c",
+   "line": 42,
+   "column": 1
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "memleak",
+   "severity": "error",
+   "message": "Memory leak: data",
+   "file_path": "src/t061x.c",
+   "line": 72,
+   "column": 1
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t062x.c",
+   "line": 108,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t062x.c",
+   "line": 128,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t062x.c",
+   "line": 28,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t062x.c",
+   "line": 37,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t062x.c",
+   "line": 53,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t062x.c",
+   "line": 62,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t062x.c",
+   "line": 79,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t062x.c",
+   "line": 88,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t062x.c",
+   "line": 100,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t062x.c",
+   "line": 113,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t062x.c",
+   "line": 125,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t062x.c",
+   "line": 133,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t063x.c",
+   "line": 59,
+   "column": 23
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t064a.c",
+   "line": 52,
+   "column": 19
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t064b.c",
+   "line": 29,
+   "column": 11
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t064b.c",
+   "line": 44,
+   "column": 11
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t064b.c",
+   "line": 29,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t064b.c",
+   "line": 44,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataVector' should be passed by const reference.",
+   "file_path": "src/t065b.cpp",
+   "line": 32,
+   "column": 36
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataVector' should be passed by const reference.",
+   "file_path": "src/t065b.cpp",
+   "line": 45,
+   "column": 36
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataVector' should be passed by const reference.",
+   "file_path": "src/t065b.cpp",
+   "line": 53,
+   "column": 36
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t065b.cpp",
+   "line": 35,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t065b.cpp",
+   "line": 47,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t065b.cpp",
+   "line": 35,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t065b.cpp",
+   "line": 47,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "memleak",
+   "severity": "error",
+   "message": "Memory leak: data",
+   "file_path": "src/t066x.cpp",
+   "line": 46,
+   "column": 1
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "memleak",
+   "severity": "error",
+   "message": "Memory leak: data",
+   "file_path": "src/t066x.cpp",
+   "line": 75,
+   "column": 1
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t066x.cpp",
+   "line": 33,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t066x.cpp",
+   "line": 41,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t066x.cpp",
+   "line": 57,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t066x.cpp",
+   "line": 65,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t066x.cpp",
+   "line": 82,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t066x.cpp",
+   "line": 90,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t066x.cpp",
+   "line": 102,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t066x.cpp",
+   "line": 116,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t066x.cpp",
+   "line": 128,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t066x.cpp",
+   "line": 137,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t069a.c",
+   "line": 52,
+   "column": 23
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called.",
+   "file_path": "src/t070a.cpp",
+   "line": 64,
+   "column": 23
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t070a.cpp",
+   "line": 39,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t070a.cpp",
+   "line": 64,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t070a.cpp",
+   "line": 84,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t070b.cpp",
+   "line": 33,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t070b.cpp",
+   "line": 45,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t070b.cpp",
+   "line": 33,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t070b.cpp",
+   "line": 45,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t071b.c",
+   "line": 46,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t071b.c",
+   "line": 46,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t074b.cpp",
+   "line": 53,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t074b.cpp",
+   "line": 53,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t075b.cpp",
+   "line": 30,
+   "column": 23
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t075b.cpp",
+   "line": 45,
+   "column": 23
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t075b.cpp",
+   "line": 56,
+   "column": 23
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t075b.cpp",
+   "line": 58,
+   "column": 11
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t075b.cpp",
+   "line": 58,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t076x.cpp",
+   "line": 76,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t076x.cpp",
+   "line": 76,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t077b.cpp",
+   "line": 53,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t077b.cpp",
+   "line": 53,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t078x.cpp",
+   "line": 38,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t078x.cpp",
+   "line": 86,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t078x.cpp",
+   "line": 128,
+   "column": 8
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "doubleFree",
+   "severity": "error",
+   "message": "Memory pointed to by 'data' is freed twice.",
+   "file_path": "src/t078x.cpp",
+   "line": 41,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t080b.cpp",
+   "line": 30,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t080b.cpp",
+   "line": 45,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t080b.cpp",
+   "line": 56,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t080b.cpp",
+   "line": 58,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "unreadVariable",
+   "severity": "style",
+   "message": "Variable 'data' is assigned a value that is never used.",
+   "file_path": "src/t080b.cpp",
+   "line": 58,
+   "column": 20
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "knownConditionTrueFalse",
+   "severity": "style",
+   "message": "Condition 'data!=NULL' is always false",
+   "file_path": "src/t081x.c",
+   "line": 56,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "nullPointer",
+   "severity": "error",
+   "message": "Null pointer dereference: data",
+   "file_path": "src/t081x.c",
+   "line": 31,
+   "column": 22
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t081x.c",
+   "line": 26,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t081x.c",
+   "line": 41,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t081x.c",
+   "line": 52,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t082x.c",
+   "line": 30,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t082x.c",
+   "line": 52,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t082x.c",
+   "line": 70,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t083b.c",
+   "line": 31,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t083b.c",
+   "line": 43,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t083b.c",
+   "line": 51,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t084x.c",
+   "line": 38,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t084x.c",
+   "line": 60,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t084x.c",
+   "line": 75,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t084x.c",
+   "line": 38,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t084x.c",
+   "line": 60,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t084x.c",
+   "line": 75,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "nullPointer",
+   "severity": "warning",
+   "message": "Possible null pointer dereference: data",
+   "file_path": "src/t085x.c",
+   "line": 36,
+   "column": 24
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t085x.c",
+   "line": 26,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t085x.c",
+   "line": 48,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t085x.c",
+   "line": 73,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t086x.c",
+   "line": 38,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t086x.c",
+   "line": 60,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t086x.c",
+   "line": 75,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t086x.c",
+   "line": 38,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t086x.c",
+   "line": 60,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t086x.c",
+   "line": 75,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t087b.c",
+   "line": 26,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t087b.c",
+   "line": 39,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t087b.c",
+   "line": 48,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t088b.c",
+   "line": 27,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t088b.c",
+   "line": 40,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t088b.c",
+   "line": 49,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t089b.c",
+   "line": 30,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t089b.c",
+   "line": 43,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t089b.c",
+   "line": 52,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t090b.cpp",
+   "line": 30,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t090b.cpp",
+   "line": 44,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t090b.cpp",
+   "line": 53,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t090b.cpp",
+   "line": 33,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t090b.cpp",
+   "line": 46,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "constVariablePointer",
+   "severity": "style",
+   "message": "Variable 'data' can be declared as pointer to const",
+   "file_path": "src/t090b.cpp",
+   "line": 55,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "invalidLifetime",
+   "severity": "error",
+   "message": "Using pointer to local variable 'dataBuffer' that is out of scope.",
+   "file_path": "src/t091a.cpp",
+   "line": 50,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "invalidLifetime",
+   "severity": "error",
+   "message": "Using pointer to local variable 'dataBuffer' that is out of scope.",
+   "file_path": "src/t091a.cpp",
+   "line": 51,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "invalidLifetime",
+   "severity": "error",
+   "message": "Using pointer to local variable 'dataBuffer' that is out of scope.",
+   "file_path": "src/t091a.cpp",
+   "line": 52,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t093b.cpp",
+   "line": 29,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t093b.cpp",
+   "line": 43,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "invalidLifetime",
+   "severity": "error",
+   "message": "Using pointer to local variable 'dataBuffer' that is out of scope.",
+   "file_path": "src/t094x.cpp",
+   "line": 39,
+   "column": 23
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "invalidLifetime",
+   "severity": "error",
+   "message": "Using pointer to local variable 'dataBuffer' that is out of scope.",
+   "file_path": "src/t094x.cpp",
+   "line": 41,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "autovarInvalidDeallocation",
+   "severity": "error",
+   "message": "Deallocation of an auto-variable (dataBuffer) results in undefined behaviour.",
+   "file_path": "src/t094x.cpp",
+   "line": 41,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t094x.cpp",
+   "line": 30,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t094x.cpp",
+   "line": 53,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t094x.cpp",
+   "line": 77,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t095b.cpp",
+   "line": 29,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t095b.cpp",
+   "line": 45,
+   "column": 27
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called.",
+   "file_path": "src/t097x.cpp",
+   "line": 34,
+   "column": 47
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t097x.cpp",
+   "line": 34,
+   "column": 36
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "allocaCalled",
+   "severity": "warning",
+   "message": "Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead.",
+   "file_path": "src/t098x.c",
+   "line": 31,
+   "column": 47
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "nullPointer",
+   "severity": "warning",
+   "message": "Possible null pointer dereference: data",
+   "file_path": "src/t098x.c",
+   "line": 42,
+   "column": 23
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "nullPointer",
+   "severity": "warning",
+   "message": "Possible null pointer dereference: data",
+   "file_path": "src/t098x.c",
+   "line": 81,
+   "column": 23
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "nullPointer",
+   "severity": "warning",
+   "message": "Possible null pointer dereference: data",
+   "file_path": "src/t098x.c",
+   "line": 111,
+   "column": 23
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "invalidLifetime",
+   "severity": "error",
+   "message": "Using pointer to local variable 'dataBuffer' that is out of scope.",
+   "file_path": "src/t099x.c",
+   "line": 42,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "invalidLifetime",
+   "severity": "error",
+   "message": "Using pointer to local variable 'dataBuffer' that is out of scope.",
+   "file_path": "src/t099x.c",
+   "line": 44,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "autovarInvalidDeallocation",
+   "severity": "error",
+   "message": "Deallocation of an auto-variable (dataBuffer) results in undefined behaviour.",
+   "file_path": "src/t099x.c",
+   "line": 44,
+   "column": 10
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "nullPointer",
+   "severity": "warning",
+   "message": "Possible null pointer dereference: data",
+   "file_path": "src/t099x.c",
+   "line": 42,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "nullPointer",
+   "severity": "warning",
+   "message": "Possible null pointer dereference: data",
+   "file_path": "src/t099x.c",
+   "line": 81,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "nullPointer",
+   "severity": "warning",
+   "message": "Possible null pointer dereference: data",
+   "file_path": "src/t099x.c",
+   "line": 111,
+   "column": 18
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "invalidLifetime",
+   "severity": "error",
+   "message": "Using pointer to local variable 'dataBuffer' that is out of scope.",
+   "file_path": "src/t100a.c",
+   "line": 43,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t102a.cpp",
+   "line": 38,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t102a.cpp",
+   "line": 59,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "redundantInitialization",
+   "severity": "style",
+   "message": "Redundant initialization for 'data'. The initialized value is overwritten before it is read.",
+   "file_path": "src/t104x.c",
+   "line": 32,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "redundantInitialization",
+   "severity": "style",
+   "message": "Redundant initialization for 'data'. The initialized value is overwritten before it is read.",
+   "file_path": "src/t104x.c",
+   "line": 58,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t104x.c",
+   "line": 30,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t104x.c",
+   "line": 36,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t104x.c",
+   "line": 56,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t104x.c",
+   "line": 62,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t105a.cpp",
+   "line": 38,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t105a.cpp",
+   "line": 59,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t106x.c",
+   "line": 38,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t106x.c",
+   "line": 60,
+   "column": 15
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t111b.cpp",
+   "line": 28,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t111b.cpp",
+   "line": 47,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "mismatchAllocDealloc",
+   "severity": "error",
+   "message": "Mismatching allocation and deallocation: data",
+   "file_path": "src/t112x.cpp",
+   "line": 50,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t112x.cpp",
+   "line": 33,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t112x.cpp",
+   "line": 70,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t112x.cpp",
+   "line": 77,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t113a.cpp",
+   "line": 38,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t113a.cpp",
+   "line": 79,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t113b.cpp",
+   "line": 28,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "passedByValue",
+   "severity": "performance",
+   "message": "Function parameter 'dataList' should be passed by const reference.",
+   "file_path": "src/t113b.cpp",
+   "line": 42,
+   "column": 34
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "mismatchAllocDealloc",
+   "severity": "error",
+   "message": "Mismatching allocation and deallocation: data",
+   "file_path": "src/t114x.cpp",
+   "line": 40,
+   "column": 16
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "memleak",
+   "severity": "error",
+   "message": "Memory leak: data",
+   "file_path": "src/t114x.cpp",
+   "line": 70,
+   "column": 1
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t114x.cpp",
+   "line": 33,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t114x.cpp",
+   "line": 57,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t114x.cpp",
+   "line": 81,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t114x.cpp",
+   "line": 30,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t114x.cpp",
+   "line": 36,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t114x.cpp",
+   "line": 54,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t114x.cpp",
+   "line": 60,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t114x.cpp",
+   "line": 78,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t114x.cpp",
+   "line": 84,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '!='.",
+   "file_path": "src/t114x.cpp",
+   "line": 97,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t114x.cpp",
+   "line": 107,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t114x.cpp",
+   "line": 121,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateExpression",
+   "severity": "style",
+   "message": "Same expression on both sides of '=='.",
+   "file_path": "src/t114x.cpp",
+   "line": 126,
+   "column": 9
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t115x.cpp",
+   "line": 36,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t115x.cpp",
+   "line": 86,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "duplicateCondition",
+   "severity": "style",
+   "message": "The if condition is the same as the previous if condition",
+   "file_path": "src/t115x.cpp",
+   "line": 128,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t115x.cpp",
+   "line": 33,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t115x.cpp",
+   "line": 58,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t115x.cpp",
+   "line": 83,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t116x.cpp",
+   "line": 36,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t116x.cpp",
+   "line": 86,
+   "column": 17
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "redundantInitialization",
+   "severity": "style",
+   "message": "Redundant initialization for 'data'. The initialized value is overwritten before it is read.",
+   "file_path": "src/t116x.cpp",
+   "line": 34,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "redundantInitialization",
+   "severity": "style",
+   "message": "Redundant initialization for 'data'. The initialized value is overwritten before it is read.",
+   "file_path": "src/t116x.cpp",
+   "line": 63,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "redundantInitialization",
+   "severity": "style",
+   "message": "Redundant initialization for 'data'. The initialized value is overwritten before it is read.",
+   "file_path": "src/t116x.cpp",
+   "line": 84,
+   "column": 14
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t116x.cpp",
+   "line": 33,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t116x.cpp",
+   "line": 41,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t116x.cpp",
+   "line": 61,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t116x.cpp",
+   "line": 67,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t116x.cpp",
+   "line": 83,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "shadowVariable",
+   "severity": "style",
+   "message": "Local variable 'data' shadows outer variable",
+   "file_path": "src/t116x.cpp",
+   "line": 91,
+   "column": 25
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t117a.cpp",
+   "line": 55,
+   "column": 12
+  },
+  {
+   "tool": "cppcheck",
+   "rule_id": "cstyleCast",
+   "severity": "style",
+   "message": "C-style pointer casting",
+   "file_path": "src/t120a.cpp",
+   "line": 55,
+   "column": 12
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Storage provided to placement new is only 4 bytes, whereas the allocated type requires 8 bytes [cplusplus.PlacementNew]",
+   "file_path": "src/t009x.cpp",
+   "line": 41,
+   "column": 35
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Storage type is aligned to 1 bytes but allocated type is aligned to 4 bytes [cplusplus.PlacementNew]",
+   "file_path": "src/t009x.cpp",
+   "line": 72,
+   "column": 34
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Storage type is aligned to 1 bytes but allocated type is aligned to 4 bytes [cplusplus.PlacementNew]",
+   "file_path": "src/t009x.cpp",
+   "line": 97,
+   "column": 35
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Array access (from variable 'data') results in a null pointer dereference [core.NullDereference]",
+   "file_path": "src/t098x.c",
+   "line": 42,
+   "column": 23
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Array access (from variable 'data') results in a null pointer dereference [core.NullDereference]",
+   "file_path": "src/t098x.c",
+   "line": 81,
+   "column": 23
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Array access (from variable 'data') results in a null pointer dereference [core.NullDereference]",
+   "file_path": "src/t098x.c",
+   "line": 111,
+   "column": 23
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t075b.cpp",
+   "line": 58,
+   "column": 11
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Memory allocated by realloc() should be deallocated by free(), not 'delete[]' [unix.MismatchedDeallocator]",
+   "file_path": "src/t112x.cpp",
+   "line": 45,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Memory allocated by 'new[]' should be deallocated by 'delete[]', not free() [unix.MismatchedDeallocator]",
+   "file_path": "src/t112x.cpp",
+   "line": 50,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t031a.cpp",
+   "line": 56,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t077b.cpp",
+   "line": 53,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t038x.c",
+   "line": 31,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t038x.c",
+   "line": 57,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t038x.c",
+   "line": 91,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t038x.c",
+   "line": 120,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t038x.c",
+   "line": 147,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Memory allocated by realloc() should be deallocated by free(), not 'delete' [unix.MismatchedDeallocator]",
+   "file_path": "src/t115x.cpp",
+   "line": 40,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Argument to 'delete' is the address of the local variable 'dataBuffer', which is not memory allocated by 'new' [cplusplus.NewDelete]",
+   "file_path": "src/t094x.cpp",
+   "line": 41,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'data' [unix.Malloc]",
+   "file_path": "src/t063x.c",
+   "line": 41,
+   "column": 1
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'fn_23911629' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t008a.c",
+   "line": 30,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'fn_31085322' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t008a.c",
+   "line": 48,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'data' [unix.Malloc]",
+   "file_path": "src/t061x.c",
+   "line": 35,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'data' [unix.Malloc]",
+   "file_path": "src/t061x.c",
+   "line": 65,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'data' [unix.Malloc]",
+   "file_path": "src/t061x.c",
+   "line": 93,
+   "column": 1
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'data' [cplusplus.NewDeleteLeaks]",
+   "file_path": "src/t067x.cpp",
+   "line": 48,
+   "column": 1
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'myUnion.unionFirst' [unix.Malloc]",
+   "file_path": "src/t106x.c",
+   "line": 38,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'myUnion.unionFirst' [unix.Malloc]",
+   "file_path": "src/t106x.c",
+   "line": 60,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t060a.c",
+   "line": 35,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t060a.c",
+   "line": 54,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t060a.c",
+   "line": 69,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t064b.c",
+   "line": 29,
+   "column": 11
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t064b.c",
+   "line": 44,
+   "column": 11
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t042a.c",
+   "line": 34,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t042a.c",
+   "line": 52,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t042a.c",
+   "line": 66,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Memory allocated by calloc() should be deallocated by free(), not 'delete' [unix.MismatchedDeallocator]",
+   "file_path": "src/t114x.cpp",
+   "line": 40,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t065b.cpp",
+   "line": 35,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t065b.cpp",
+   "line": 47,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t074b.cpp",
+   "line": 53,
+   "column": 20
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Memory allocated by alloca() should not be deallocated [unix.Malloc]",
+   "file_path": "src/t097x.cpp",
+   "line": 42,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t037x.c",
+   "line": 41,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t037x.c",
+   "line": 84,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t037x.c",
+   "line": 113,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t037x.c",
+   "line": 137,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t104x.c",
+   "line": 30,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t104x.c",
+   "line": 56,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'data' [unix.Malloc]",
+   "file_path": "src/t062x.c",
+   "line": 35,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t048x.c",
+   "line": 30,
+   "column": 13
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t048x.c",
+   "line": 59,
+   "column": 13
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t048x.c",
+   "line": 84,
+   "column": 13
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t071b.c",
+   "line": 46,
+   "column": 12
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t044x.c",
+   "line": 25,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t044x.c",
+   "line": 50,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t044x.c",
+   "line": 83,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t044x.c",
+   "line": 111,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t044x.c",
+   "line": 137,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Attempt to free released memory [cplusplus.NewDelete]",
+   "file_path": "src/t076x.cpp",
+   "line": 35,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t076x.cpp",
+   "line": 76,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'structCharVoid' [unix.Malloc]",
+   "file_path": "src/t016x.c",
+   "line": 47,
+   "column": 13
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'structCharVoid' [unix.Malloc]",
+   "file_path": "src/t016x.c",
+   "line": 76,
+   "column": 13
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'structCharVoid' [unix.Malloc]",
+   "file_path": "src/t016x.c",
+   "line": 96,
+   "column": 13
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t040a.c",
+   "line": 30,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t040a.c",
+   "line": 48,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t040a.c",
+   "line": 61,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t116x.cpp",
+   "line": 33,
+   "column": 25
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Memory allocated by realloc() should be deallocated by free(), not 'delete' [unix.MismatchedDeallocator]",
+   "file_path": "src/t116x.cpp",
+   "line": 44,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t116x.cpp",
+   "line": 61,
+   "column": 25
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t116x.cpp",
+   "line": 83,
+   "column": 25
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Storage type is aligned to 1 bytes but allocated type is aligned to 8 bytes [cplusplus.PlacementNew]",
+   "file_path": "src/t096a.cpp",
+   "line": 38,
+   "column": 29
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Attempt to free released memory [cplusplus.NewDelete]",
+   "file_path": "src/t078x.cpp",
+   "line": 41,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'data' [cplusplus.NewDeleteLeaks]",
+   "file_path": "src/t078x.cpp",
+   "line": 115,
+   "column": 1
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Result of 'malloc' is converted to a pointer of type 'twoIntsStruct', which is incompatible with sizeof operand type 'twoIntsStruct *' [unix.MallocSizeof]",
+   "file_path": "src/t020a.cpp",
+   "line": 38,
+   "column": 29
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Use of memory after it is freed [cplusplus.NewDelete]",
+   "file_path": "src/t073x.cpp",
+   "line": 48,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Use of memory after it is freed [cplusplus.NewDelete]",
+   "file_path": "src/t073x.cpp",
+   "line": 85,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Use of memory after it is freed [cplusplus.NewDelete]",
+   "file_path": "src/t073x.cpp",
+   "line": 108,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Potential leak of memory pointed to by 'data' [cplusplus.NewDeleteLeaks]",
+   "file_path": "src/t066x.cpp",
+   "line": 39,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t046a.c",
+   "line": 59,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Array access (from variable 'data') results in a null pointer dereference [core.NullDereference]",
+   "file_path": "src/t081x.c",
+   "line": 31,
+   "column": 22
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Array access (from variable 'data') results in a null pointer dereference [core.NullDereference]",
+   "file_path": "src/t082x.c",
+   "line": 33,
+   "column": 22
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Memory allocated by 'new' should be deallocated by 'delete', not 'delete[]' [unix.MismatchedDeallocator]",
+   "file_path": "src/t118x.cpp",
+   "line": 34,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t039a.c",
+   "line": 50,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t055x.c",
+   "line": 103,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t055x.c",
+   "line": 126,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t036a.c",
+   "line": 46,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t035x.c",
+   "line": 58,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t053a.c",
+   "line": 31,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t053a.c",
+   "line": 48,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t053a.c",
+   "line": 61,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Attempt to free released memory [cplusplus.NewDelete]",
+   "file_path": "src/t079x.cpp",
+   "line": 41,
+   "column": 9
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t043a.c",
+   "line": 30,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t043a.c",
+   "line": 52,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t043a.c",
+   "line": 65,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t043a.c",
+   "line": 78,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t052a.c",
+   "line": 56,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t058a.cpp",
+   "line": 147,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Dereference of null pointer (loaded from variable 'data') [core.NullDereference]",
+   "file_path": "src/t085x.c",
+   "line": 36,
+   "column": 23
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t080b.cpp",
+   "line": 58,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t045x.c",
+   "line": 295,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t045x.c",
+   "line": 322,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Use of memory after it is freed [unix.Malloc]",
+   "file_path": "src/t072x.c",
+   "line": 42,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Use of memory after it is freed [unix.Malloc]",
+   "file_path": "src/t072x.c",
+   "line": 86,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t012x.c",
+   "line": 393,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t070b.cpp",
+   "line": 33,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t070b.cpp",
+   "line": 45,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'fn_23911629' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t005x.c",
+   "line": 33,
+   "column": 12
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'fn_31085322' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t005x.c",
+   "line": 60,
+   "column": 12
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Array access (from variable 'data') results in a null pointer dereference [core.NullDereference]",
+   "file_path": "src/t099x.c",
+   "line": 42,
+   "column": 18
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Array access (from variable 'data') results in a null pointer dereference [core.NullDereference]",
+   "file_path": "src/t099x.c",
+   "line": 81,
+   "column": 18
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Array access (from variable 'data') results in a null pointer dereference [core.NullDereference]",
+   "file_path": "src/t099x.c",
+   "line": 111,
+   "column": 18
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'data' is never read [deadcode.DeadStores]",
+   "file_path": "src/t047a.c",
+   "line": 66,
+   "column": 5
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'fn_23911629' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t004x.c",
+   "line": 32,
+   "column": 15
+  },
+  {
+   "tool": "clang",
+   "rule_id": "clang-analyzer",
+   "severity": "warning",
+   "message": "Value stored to 'fn_31085322' during its initialization is never read [deadcode.DeadStores]",
+   "file_path": "src/t004x.c",
+   "line": 54,
+   "column": 15
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t069a.c:37 passed to 'fn_60533793()' in t069b.c:27 (param 'data'): heap-allocated with calloc() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t069b.c",
+   "line": 27,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t069a.c",
+   "caller_line": 37
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t069a.c:72 passed to 'fn_42175495()' in t069b.c:47 (param 'data'): heap-allocated with calloc() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t069b.c",
+   "line": 47,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t069a.c",
+   "caller_line": 72
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t075a.cpp:38 passed to 'fn_17437270()' in t058b.cpp:28 (param 'dataList'): heap-allocated with new[]() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 28,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t075a.cpp",
+   "caller_line": 38
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t075a.cpp:55 passed to 'fn_88213994()' in t058b.cpp:41 (param 'dataList'): heap-allocated with new[]() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 41,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t075a.cpp",
+   "caller_line": 55
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t075a.cpp:69 passed to 'fn_17564326()' in t058b.cpp:49 (param 'dataList'): heap-allocated with new[]() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 49,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t075a.cpp",
+   "caller_line": 69
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t063x.c:40 passed to 'fn_17437270()' in t058b.cpp:28 (param 'dataList'): heap-allocated with realloc() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 28,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t063x.c",
+   "caller_line": 40
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t063x.c:83 passed to 'fn_17564326()' in t058b.cpp:49 (param 'dataList'): heap-allocated with realloc() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 49,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t063x.c",
+   "caller_line": 83
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t064a.c:37 passed to 'fn_90470740()' in t064b.c:24 (param 'dataVoidPtr'): heap-allocated with calloc() in caller; callee never frees parameter 'dataVoidPtr'.",
+   "file_path": "src/t064b.c",
+   "line": 24,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t064a.c",
+   "caller_line": 37
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t064a.c:72 passed to 'fn_61233611()' in t064b.c:50 (param 'dataVoidPtr'): heap-allocated with calloc() in caller; callee never frees parameter 'dataVoidPtr'.",
+   "file_path": "src/t064b.c",
+   "line": 50,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t064a.c",
+   "caller_line": 72
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t019a.cpp:36 passed to 'fn_43925794()' in t068b.cpp:32 (param 'data'): heap-allocated with new[]() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t068b.cpp",
+   "line": 32,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t019a.cpp",
+   "caller_line": 36
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t019a.cpp:54 passed to 'fn_15195694()' in t068b.cpp:44 (param 'data'): heap-allocated with new[]() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t068b.cpp",
+   "line": 44,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t019a.cpp",
+   "caller_line": 54
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t080a.cpp:38 passed to 'fn_17437270()' in t058b.cpp:28 (param 'dataList'): heap-allocated with new() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 28,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t080a.cpp",
+   "caller_line": 38
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t080a.cpp:55 passed to 'fn_88213994()' in t058b.cpp:41 (param 'dataList'): heap-allocated with new() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 41,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t080a.cpp",
+   "caller_line": 55
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t080a.cpp:69 passed to 'fn_17564326()' in t058b.cpp:49 (param 'dataList'): heap-allocated with new() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 49,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t080a.cpp",
+   "caller_line": 69
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t119a.cpp:35 passed to 'fn_43925794()' in t068b.cpp:32 (param 'data'): heap-allocated with new() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t068b.cpp",
+   "line": 32,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t119a.cpp",
+   "caller_line": 35
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t119a.cpp:52 passed to 'fn_15195694()' in t068b.cpp:44 (param 'data'): heap-allocated with new[]() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t068b.cpp",
+   "line": 44,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t119a.cpp",
+   "caller_line": 52
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t119a.cpp:65 passed to 'fn_93646304()' in t068b.cpp:52 (param 'data'): heap-allocated with new() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t068b.cpp",
+   "line": 52,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t119a.cpp",
+   "caller_line": 65
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t109a.c:32 passed to 'fn_93043809()' in t109b.c:26 (param 'data'): heap-allocated with malloc() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t109b.c",
+   "line": 26,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t109a.c",
+   "caller_line": 32
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t109a.c:49 passed to 'fn_39387451()' in t109b.c:38 (param 'data'): heap-allocated with malloc() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t109b.c",
+   "line": 38,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t109a.c",
+   "caller_line": 49
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t068a.cpp:42 passed to 'fn_43925794()' in t068b.cpp:32 (param 'data'): heap-allocated with new() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t068b.cpp",
+   "line": 32,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t068a.cpp",
+   "caller_line": 42
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t068a.cpp:79 passed to 'fn_93646304()' in t068b.cpp:52 (param 'data'): heap-allocated with new() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t068b.cpp",
+   "line": 52,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t068a.cpp",
+   "caller_line": 79
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-null-deref",
+   "severity": "error",
+   "message": "[cross-null-deref] 'data' in t111a.cpp:33 passed to 'fn_73892957()' in t028x.c:35 (param 'data'): set to NULL in caller, dereferenced in callee without null check.",
+   "file_path": "src/t028x.c",
+   "line": 35,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t111a.cpp",
+   "caller_line": 33
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-null-deref",
+   "severity": "error",
+   "message": "[cross-null-deref] 'data' in t111a.cpp:51 passed to 'fn_30695060()' in t028x.c:76 (param 'data'): set to NULL in caller, dereferenced in callee without null check.",
+   "file_path": "src/t028x.c",
+   "line": 76,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t111a.cpp",
+   "caller_line": 51
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-null-deref",
+   "severity": "error",
+   "message": "[cross-null-deref] 'data' in t111a.cpp:65 passed to 'fn_24975873()' in t028x.c:104 (param 'data'): set to NULL in caller, dereferenced in callee without null check.",
+   "file_path": "src/t028x.c",
+   "line": 104,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t111a.cpp",
+   "caller_line": 65
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t073x.cpp:48 passed to 'fn_17437270()' in t058b.cpp:28 (param 'dataList'): heap-allocated with new[]() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 28,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t073x.cpp",
+   "caller_line": 48
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-alloc-mismatch",
+   "severity": "error",
+   "message": "[cross-alloc-mismatch] 'data' in t073x.cpp:85 passed to 'fn_82941975()' in t110x.c:57 (param 'data'): allocated with new[]() but freed with free() (expected delete[]()).",
+   "file_path": "src/t110x.c",
+   "line": 72,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t073x.cpp",
+   "caller_line": 85
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-double-free",
+   "severity": "error",
+   "message": "[cross-double-free] 'data' in t073x.cpp:85 passed to 'fn_82941975()' in t110x.c:57 (param 'data'): already freed in caller with free(); callee frees it again.",
+   "file_path": "src/t110x.c",
+   "line": 72,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t073x.cpp",
+   "caller_line": 85
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-alloc-mismatch",
+   "severity": "error",
+   "message": "[cross-alloc-mismatch] 'data' in t073x.cpp:108 passed to 'fn_66882694()' in t110x.c:88 (param 'data'): allocated with new[]() but freed with free() (expected delete[]()).",
+   "file_path": "src/t110x.c",
+   "line": 98,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t073x.cpp",
+   "caller_line": 108
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-double-free",
+   "severity": "error",
+   "message": "[cross-double-free] 'data' in t073x.cpp:108 passed to 'fn_66882694()' in t110x.c:88 (param 'data'): already freed in caller with free(); callee frees it again.",
+   "file_path": "src/t110x.c",
+   "line": 98,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t073x.cpp",
+   "caller_line": 108
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t073x.cpp:129 passed to 'fn_88213994()' in t058b.cpp:41 (param 'dataList'): heap-allocated with new[]() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 41,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t073x.cpp",
+   "caller_line": 129
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t118x.cpp:46 passed to 'fn_17437270()' in t058b.cpp:28 (param 'dataList'): heap-allocated with new() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 28,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t118x.cpp",
+   "caller_line": 46
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-alloc-mismatch",
+   "severity": "error",
+   "message": "[cross-alloc-mismatch] 'data' in t118x.cpp:81 passed to 'fn_82941975()' in t110x.c:57 (param 'data'): allocated with new() but freed with free() (expected delete()).",
+   "file_path": "src/t110x.c",
+   "line": 72,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t118x.cpp",
+   "caller_line": 81
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-alloc-mismatch",
+   "severity": "error",
+   "message": "[cross-alloc-mismatch] 'data' in t118x.cpp:102 passed to 'fn_66882694()' in t110x.c:88 (param 'data'): allocated with new() but freed with free() (expected delete()).",
+   "file_path": "src/t110x.c",
+   "line": 98,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t118x.cpp",
+   "caller_line": 102
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t118x.cpp:124 passed to 'fn_88213994()' in t058b.cpp:41 (param 'dataList'): heap-allocated with new[]() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 41,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t118x.cpp",
+   "caller_line": 124
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t071a.c:36 passed to 'fn_70967717()' in t071b.c:24 (param 'dataPtr'): heap-allocated with malloc() in caller; callee never frees parameter 'dataPtr'.",
+   "file_path": "src/t071b.c",
+   "line": 24,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t071a.c",
+   "caller_line": 36
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t071a.c:54 passed to 'fn_09494502()' in t071b.c:36 (param 'dataPtr'): heap-allocated with malloc() in caller; callee never frees parameter 'dataPtr'.",
+   "file_path": "src/t071b.c",
+   "line": 36,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t071a.c",
+   "caller_line": 54
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t071a.c:69 passed to 'fn_72034440()' in t071b.c:44 (param 'dataPtr'): heap-allocated with malloc() in caller; callee never frees parameter 'dataPtr'.",
+   "file_path": "src/t071b.c",
+   "line": 44,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t071a.c",
+   "caller_line": 69
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-int-underflow",
+   "severity": "error",
+   "message": "[cross-int-underflow] 'data' in t043a.c:34 passed to 'fn_57842524()' in t043b.c:25 (param 'data'): value may be near integer MIN; callee performs arithmetic on 'data' without an underflow check.",
+   "file_path": "src/t043b.c",
+   "line": 25,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t043a.c",
+   "caller_line": 34
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-int-underflow",
+   "severity": "error",
+   "message": "[cross-int-underflow] 'data' in t043a.c:82 passed to 'fn_24727528()' in t043b.c:95 (param 'data'): value may be near integer MIN; callee performs arithmetic on 'data' without an underflow check.",
+   "file_path": "src/t043b.c",
+   "line": 95,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t043a.c",
+   "caller_line": 82
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t101a.c:32 passed to 'fn_43192249()' in t101b.c:26 (param 'data'): heap-allocated with malloc() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t101b.c",
+   "line": 26,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t101a.c",
+   "caller_line": 32
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t101a.c:49 passed to 'fn_60123270()' in t101b.c:38 (param 'data'): heap-allocated with malloc() in caller; callee never frees parameter 'data'.",
+   "file_path": "src/t101b.c",
+   "line": 38,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t101a.c",
+   "caller_line": 49
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t017a.cpp:40 passed to 'fn_17437270()' in t058b.cpp:28 (param 'dataList'): heap-allocated with new[]() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 28,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t017a.cpp",
+   "caller_line": 40
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t017a.cpp:56 passed to 'fn_88213994()' in t058b.cpp:41 (param 'dataList'): heap-allocated with new[]() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 41,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t017a.cpp",
+   "caller_line": 56
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-free-nonheap",
+   "severity": "error",
+   "message": "[cross-free-nonheap] 'data' in t012x.c:254 passed to 'fn_82941975()' in t110x.c:57 (param 'data'): stack/alloca pointer freed with free() in callee — undefined behaviour.",
+   "file_path": "src/t110x.c",
+   "line": 72,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t012x.c",
+   "caller_line": 254
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-free-nonheap",
+   "severity": "error",
+   "message": "[cross-free-nonheap] 'data' in t012x.c:352 passed to 'fn_66882694()' in t110x.c:88 (param 'data'): stack/alloca pointer freed with free() in callee — undefined behaviour.",
+   "file_path": "src/t110x.c",
+   "line": 98,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t012x.c",
+   "caller_line": 352
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-null-deref",
+   "severity": "error",
+   "message": "[cross-null-deref] 'data' in t087a.c:32 passed to 'fn_85919025()' in t087b.c:24 (param 'dataPtr'): set to NULL in caller, dereferenced in callee without null check.",
+   "file_path": "src/t087b.c",
+   "line": 24,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t087a.c",
+   "caller_line": 32
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-null-deref",
+   "severity": "error",
+   "message": "[cross-null-deref] 'data' in t087a.c:58 passed to 'fn_28138191()' in t087b.c:46 (param 'dataPtr'): set to NULL in caller, dereferenced in callee without null check.",
+   "file_path": "src/t087b.c",
+   "line": 46,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t087a.c",
+   "caller_line": 58
+  },
+  {
+   "tool": "clang-cross-file",
+   "rule_id": "cross-mem-leak",
+   "severity": "error",
+   "message": "[cross-mem-leak] 'data' in t110x.c:45 passed to 'fn_17437270()' in t058b.cpp:28 (param 'dataList'): heap-allocated with malloc() in caller; callee never frees parameter 'dataList'.",
+   "file_path": "src/t058b.cpp",
+   "line": 28,
+   "column": null,
+   "cross_file": true,
+   "caller_file": "/tmp/code_review_eval_owesaeqs/dataset/src/t110x.c",
+   "caller_line": 45
+  }
+ ]
+}

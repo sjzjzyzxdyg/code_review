@@ -76,10 +76,28 @@ function colorForRisk(risk: ReviewIssue["risk_level"]) {
   return riskColor[risk];
 }
 
+// How each issue was decided by the fusion layer.
+const routeLabel: Record<string, { text: string; color: string }> = {
+  consensus: { text: "Static + LLM agree", color: "green" },
+  review: { text: "Agent reviewed", color: "blue" },
+  unreviewed: { text: "Unreviewed", color: "default" },
+  quality: { text: "Code quality", color: "default" },
+  "project-rule": { text: "Project rule", color: "purple" }
+};
+
+function routeTag(issue: ReviewIssue) {
+  if (issue.review_route === "review" && !issue.is_valid) {
+    return { text: "Rejected by agent", color: "default" };
+  }
+  return routeLabel[issue.review_route ?? ""] ?? { text: issue.review_route ?? "-", color: "default" };
+}
+
 const issueColumns = [
   { title: "Risk", dataIndex: "risk_level", key: "risk_level", width: 96 },
   { title: "Type", dataIndex: "issue_type", key: "issue_type" },
   { title: "Location", key: "location" },
+  { title: "CWE", dataIndex: "cwe", key: "cwe", width: 96 },
+  { title: "Decision", key: "route", width: 150 },
   { title: "Tool", dataIndex: "tool", key: "tool", width: 130 },
   { title: "Confidence", dataIndex: "confidence", key: "confidence", width: 120 }
 ];
@@ -335,6 +353,9 @@ onMounted(refreshAll);
                   <template v-if="column.key === 'location'">
                     <span>{{ record.file_path }}:{{ record.line }}</span>
                   </template>
+                  <template v-if="column.key === 'route'">
+                    <a-tag :color="routeTag(record).color">{{ routeTag(record).text }}</a-tag>
+                  </template>
                   <template v-if="column.key === 'confidence'">
                     <a-progress
                       :percent="Math.round(record.confidence * 100)"
@@ -351,6 +372,13 @@ onMounted(refreshAll);
               <a-descriptions size="small" :column="1" bordered>
                 <a-descriptions-item label="Location">
                   {{ activeIssue.file_path }}:{{ activeIssue.line }}
+                </a-descriptions-item>
+                <a-descriptions-item label="Decision">
+                  <a-tag :color="routeTag(activeIssue).color">{{ routeTag(activeIssue).text }}</a-tag>
+                  <span v-if="activeIssue.cwe">{{ activeIssue.cwe }}</span>
+                </a-descriptions-item>
+                <a-descriptions-item label="Reported by" v-if="activeIssue.sources?.length">
+                  {{ activeIssue.sources.join(", ") }}
                 </a-descriptions-item>
                 <a-descriptions-item label="Reason">{{ activeIssue.reason }}</a-descriptions-item>
                 <a-descriptions-item label="Fix">{{ activeIssue.fix_suggestion }}</a-descriptions-item>

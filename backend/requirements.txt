@@ -4,3 +4,4 @@ pydantic>=2.7.0
 pydantic-settings>=2.2.0
 python-multipart>=0.0.9
 langchain-core>=0.3.0
+langgraph>=1.0.0

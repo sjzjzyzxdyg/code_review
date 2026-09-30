@@ -14,7 +14,20 @@ int calculate_bonus(const UserRecord& user)
 {
     int* temporary_score = new int(load_user_score(user, 0));
     int result = *temporary_score + 5;
+    delete temporary_score;
     return result;
+}
+
+int divide_score(const UserRecord& user, int divisor)
+{
+    return load_user_score(user, 0) / divisor;
+}
+
+char* clone_name(const UserRecord& user)
+{
+    char* buf = (char*)malloc(user.name.size() + 1);
+    strcpy(buf, user.name.c_str());
+    return buf;
 }
 
 int load_user_score(const UserRecord& user, int index)

@@ -14,3 +14,7 @@ backend/*.plist
 
 node_modules/
 dist/
+
+# IDE / 本地工具配置
+.idea/
+.claude/settings.local.json

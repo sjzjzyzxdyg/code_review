@@ -1,0 +1,1049 @@
+[
+  {
+    "case_id": "CWE121_Stack_Based_Buffer_Overflow__dest_wchar_t_alloca_cpy_64",
+    "cwe": "CWE121_Stack_Based_Buffer_Overflow",
+    "flow": "64",
+    "files": [
+      "CWE121_Stack_Based_Buffer_Overflow__dest_wchar_t_alloca_cpy_64a.c",
+      "CWE121_Stack_Based_Buffer_Overflow__dest_wchar_t_alloca_cpy_64b.c"
+    ]
+  },
+  {
+    "case_id": "CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_memcpy_63",
+    "cwe": "CWE121_Stack_Based_Buffer_Overflow",
+    "flow": "63",
+    "files": [
+      "CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_memcpy_63a.c",
+      "CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_memcpy_63b.c"
+    ]
+  },
+  {
+    "case_id": "CWE121_Stack_Based_Buffer_Overflow__CWE129_large_63",
+    "cwe": "CWE121_Stack_Based_Buffer_Overflow",
+    "flow": "63",
+    "files": [
+      "CWE121_Stack_Based_Buffer_Overflow__CWE129_large_63a.c",
+      "CWE121_Stack_Based_Buffer_Overflow__CWE129_large_63b.c"
+    ]
+  },
+  {
+    "case_id": "CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_54",
+    "cwe": "CWE121_Stack_Based_Buffer_Overflow",
+    "flow": "54",
+    "files": [
+      "CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_54a.c",
+      "CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_54b.c",
+      "CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_54c.c",
+      "CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_54d.c",
+      "CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_54e.c"
+    ]
+  },
+  {
+    "case_id": "CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_52",
+    "cwe": "CWE121_Stack_Based_Buffer_Overflow",
+    "flow": "52",
+    "files": [
+      "CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_52a.c",
+      "CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_52b.c",
+      "CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_ncpy_52c.c"
+    ]
+  },
+  {
+    "case_id": "CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_snprintf_31",
+    "cwe": "CWE121_Stack_Based_Buffer_Overflow",
+    "flow": "31",
+    "files": [
+      "CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_snprintf_31.c"
+    ]
+  },
+  {
+    "case_id": "CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_01",
+    "cwe": "CWE121_Stack_Based_Buffer_Overflow",
+    "flow": "01",
+    "files": [
+      "CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_alloca_memcpy_01.c"
+    ]
+  },
+  {
+    "case_id": "CWE121_Stack_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_14",
+    "cwe": "CWE121_Stack_Based_Buffer_Overflow",
+    "flow": "14",
+    "files": [
+      "CWE121_Stack_Based_Buffer_Overflow__wchar_t_type_overrun_memcpy_14.c"
+    ]
+  },
+  {
+    "case_id": "CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_cpy_44",
+    "cwe": "CWE121_Stack_Based_Buffer_Overflow",
+    "flow": "44",
+    "files": [
+      "CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_cpy_44.c"
+    ]
+  },
+  {
+    "case_id": "CWE121_Stack_Based_Buffer_Overflow__placement_new_declare_18",
+    "cwe": "CWE121_Stack_Based_Buffer_Overflow",
+    "flow": "18",
+    "files": [
+      "CWE121_Stack_Based_Buffer_Overflow__placement_new_declare_18.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE806_char_ncat_52",
+    "cwe": "CWE122_Heap_Based_Buffer_Overflow",
+    "flow": "52",
+    "files": [
+      "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE806_char_ncat_52a.cpp",
+      "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE806_char_ncat_52b.cpp",
+      "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE806_char_ncat_52c.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_74",
+    "cwe": "CWE122_Heap_Based_Buffer_Overflow",
+    "flow": "74",
+    "files": [
+      "CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_74a.cpp",
+      "CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_74b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_wchar_t_memcpy_63",
+    "cwe": "CWE122_Heap_Based_Buffer_Overflow",
+    "flow": "63",
+    "files": [
+      "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_wchar_t_memcpy_63a.cpp",
+      "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_wchar_t_memcpy_63b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_loop_73",
+    "cwe": "CWE122_Heap_Based_Buffer_Overflow",
+    "flow": "73",
+    "files": [
+      "CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_loop_73a.cpp",
+      "CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_loop_73b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE805_char_ncat_66",
+    "cwe": "CWE122_Heap_Based_Buffer_Overflow",
+    "flow": "66",
+    "files": [
+      "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE805_char_ncat_66a.cpp",
+      "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE805_char_ncat_66b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_03",
+    "cwe": "CWE122_Heap_Based_Buffer_Overflow",
+    "flow": "03",
+    "files": [
+      "CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_03.c"
+    ]
+  },
+  {
+    "case_id": "CWE122_Heap_Based_Buffer_Overflow__c_CWE129_connect_socket_21",
+    "cwe": "CWE122_Heap_Based_Buffer_Overflow",
+    "flow": "21",
+    "files": [
+      "CWE122_Heap_Based_Buffer_Overflow__c_CWE129_connect_socket_21.c"
+    ]
+  },
+  {
+    "case_id": "CWE122_Heap_Based_Buffer_Overflow__c_CWE129_connect_socket_11",
+    "cwe": "CWE122_Heap_Based_Buffer_Overflow",
+    "flow": "11",
+    "files": [
+      "CWE122_Heap_Based_Buffer_Overflow__c_CWE129_connect_socket_11.c"
+    ]
+  },
+  {
+    "case_id": "CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_memmove_31",
+    "cwe": "CWE122_Heap_Based_Buffer_Overflow",
+    "flow": "31",
+    "files": [
+      "CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_memmove_31.c"
+    ]
+  },
+  {
+    "case_id": "CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_45",
+    "cwe": "CWE122_Heap_Based_Buffer_Overflow",
+    "flow": "45",
+    "files": [
+      "CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_45.c"
+    ]
+  },
+  {
+    "case_id": "CWE134_Uncontrolled_Format_String__char_file_fprintf_73",
+    "cwe": "CWE134_Uncontrolled_Format_String",
+    "flow": "73",
+    "files": [
+      "CWE134_Uncontrolled_Format_String__char_file_fprintf_73a.cpp",
+      "CWE134_Uncontrolled_Format_String__char_file_fprintf_73b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE134_Uncontrolled_Format_String__wchar_t_console_vprintf_64",
+    "cwe": "CWE134_Uncontrolled_Format_String",
+    "flow": "64",
+    "files": [
+      "CWE134_Uncontrolled_Format_String__wchar_t_console_vprintf_64a.c",
+      "CWE134_Uncontrolled_Format_String__wchar_t_console_vprintf_64b.c"
+    ]
+  },
+  {
+    "case_id": "CWE134_Uncontrolled_Format_String__wchar_t_file_printf_52",
+    "cwe": "CWE134_Uncontrolled_Format_String",
+    "flow": "52",
+    "files": [
+      "CWE134_Uncontrolled_Format_String__wchar_t_file_printf_52a.c",
+      "CWE134_Uncontrolled_Format_String__wchar_t_file_printf_52b.c",
+      "CWE134_Uncontrolled_Format_String__wchar_t_file_printf_52c.c"
+    ]
+  },
+  {
+    "case_id": "CWE134_Uncontrolled_Format_String__char_connect_socket_printf_72",
+    "cwe": "CWE134_Uncontrolled_Format_String",
+    "flow": "72",
+    "files": [
+      "CWE134_Uncontrolled_Format_String__char_connect_socket_printf_72a.cpp",
+      "CWE134_Uncontrolled_Format_String__char_connect_socket_printf_72b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE134_Uncontrolled_Format_String__wchar_t_environment_vfprintf_61",
+    "cwe": "CWE134_Uncontrolled_Format_String",
+    "flow": "61",
+    "files": [
+      "CWE134_Uncontrolled_Format_String__wchar_t_environment_vfprintf_61a.c",
+      "CWE134_Uncontrolled_Format_String__wchar_t_environment_vfprintf_61b.c"
+    ]
+  },
+  {
+    "case_id": "CWE134_Uncontrolled_Format_String__char_environment_vprintf_16",
+    "cwe": "CWE134_Uncontrolled_Format_String",
+    "flow": "16",
+    "files": [
+      "CWE134_Uncontrolled_Format_String__char_environment_vprintf_16.c"
+    ]
+  },
+  {
+    "case_id": "CWE134_Uncontrolled_Format_String__wchar_t_listen_socket_snprintf_15",
+    "cwe": "CWE134_Uncontrolled_Format_String",
+    "flow": "15",
+    "files": [
+      "CWE134_Uncontrolled_Format_String__wchar_t_listen_socket_snprintf_15.c"
+    ]
+  },
+  {
+    "case_id": "CWE134_Uncontrolled_Format_String__wchar_t_environment_vprintf_42",
+    "cwe": "CWE134_Uncontrolled_Format_String",
+    "flow": "42",
+    "files": [
+      "CWE134_Uncontrolled_Format_String__wchar_t_environment_vprintf_42.c"
+    ]
+  },
+  {
+    "case_id": "CWE134_Uncontrolled_Format_String__wchar_t_console_fprintf_31",
+    "cwe": "CWE134_Uncontrolled_Format_String",
+    "flow": "31",
+    "files": [
+      "CWE134_Uncontrolled_Format_String__wchar_t_console_fprintf_31.c"
+    ]
+  },
+  {
+    "case_id": "CWE134_Uncontrolled_Format_String__char_file_printf_04",
+    "cwe": "CWE134_Uncontrolled_Format_String",
+    "flow": "04",
+    "files": [
+      "CWE134_Uncontrolled_Format_String__char_file_printf_04.c"
+    ]
+  },
+  {
+    "case_id": "CWE190_Integer_Overflow__short_max_preinc_65",
+    "cwe": "CWE190_Integer_Overflow",
+    "flow": "65",
+    "files": [
+      "CWE190_Integer_Overflow__short_max_preinc_65a.c",
+      "CWE190_Integer_Overflow__short_max_preinc_65b.c"
+    ]
+  },
+  {
+    "case_id": "CWE190_Integer_Overflow__int_fscanf_postinc_54",
+    "cwe": "CWE190_Integer_Overflow",
+    "flow": "54",
+    "files": [
+      "CWE190_Integer_Overflow__int_fscanf_postinc_54a.c",
+      "CWE190_Integer_Overflow__int_fscanf_postinc_54b.c",
+      "CWE190_Integer_Overflow__int_fscanf_postinc_54c.c",
+      "CWE190_Integer_Overflow__int_fscanf_postinc_54d.c",
+      "CWE190_Integer_Overflow__int_fscanf_postinc_54e.c"
+    ]
+  },
+  {
+    "case_id": "CWE190_Integer_Overflow__char_fscanf_add_73",
+    "cwe": "CWE190_Integer_Overflow",
+    "flow": "73",
+    "files": [
+      "CWE190_Integer_Overflow__char_fscanf_add_73a.cpp",
+      "CWE190_Integer_Overflow__char_fscanf_add_73b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE190_Integer_Overflow__int64_t_max_square_63",
+    "cwe": "CWE190_Integer_Overflow",
+    "flow": "63",
+    "files": [
+      "CWE190_Integer_Overflow__int64_t_max_square_63a.c",
+      "CWE190_Integer_Overflow__int64_t_max_square_63b.c"
+    ]
+  },
+  {
+    "case_id": "CWE190_Integer_Overflow__short_fscanf_square_66",
+    "cwe": "CWE190_Integer_Overflow",
+    "flow": "66",
+    "files": [
+      "CWE190_Integer_Overflow__short_fscanf_square_66a.c",
+      "CWE190_Integer_Overflow__short_fscanf_square_66b.c"
+    ]
+  },
+  {
+    "case_id": "CWE190_Integer_Overflow__int_max_multiply_06",
+    "cwe": "CWE190_Integer_Overflow",
+    "flow": "06",
+    "files": [
+      "CWE190_Integer_Overflow__int_max_multiply_06.c"
+    ]
+  },
+  {
+    "case_id": "CWE190_Integer_Overflow__int_fscanf_multiply_34",
+    "cwe": "CWE190_Integer_Overflow",
+    "flow": "34",
+    "files": [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_34.c"
+    ]
+  },
+  {
+    "case_id": "CWE190_Integer_Overflow__int64_t_max_preinc_11",
+    "cwe": "CWE190_Integer_Overflow",
+    "flow": "11",
+    "files": [
+      "CWE190_Integer_Overflow__int64_t_max_preinc_11.c"
+    ]
+  },
+  {
+    "case_id": "CWE190_Integer_Overflow__int_connect_socket_postinc_10",
+    "cwe": "CWE190_Integer_Overflow",
+    "flow": "10",
+    "files": [
+      "CWE190_Integer_Overflow__int_connect_socket_postinc_10.c"
+    ]
+  },
+  {
+    "case_id": "CWE190_Integer_Overflow__int_max_add_21",
+    "cwe": "CWE190_Integer_Overflow",
+    "flow": "21",
+    "files": [
+      "CWE190_Integer_Overflow__int_max_add_21.c"
+    ]
+  },
+  {
+    "case_id": "CWE191_Integer_Underflow__char_rand_multiply_22",
+    "cwe": "CWE191_Integer_Underflow",
+    "flow": "22",
+    "files": [
+      "CWE191_Integer_Underflow__char_rand_multiply_22a.c",
+      "CWE191_Integer_Underflow__char_rand_multiply_22b.c"
+    ]
+  },
+  {
+    "case_id": "CWE191_Integer_Underflow__char_min_sub_62",
+    "cwe": "CWE191_Integer_Underflow",
+    "flow": "62",
+    "files": [
+      "CWE191_Integer_Underflow__char_min_sub_62a.cpp",
+      "CWE191_Integer_Underflow__char_min_sub_62b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE191_Integer_Underflow__int_fgets_postdec_68",
+    "cwe": "CWE191_Integer_Underflow",
+    "flow": "68",
+    "files": [
+      "CWE191_Integer_Underflow__int_fgets_postdec_68a.c",
+      "CWE191_Integer_Underflow__int_fgets_postdec_68b.c"
+    ]
+  },
+  {
+    "case_id": "CWE191_Integer_Underflow__char_min_sub_67",
+    "cwe": "CWE191_Integer_Underflow",
+    "flow": "67",
+    "files": [
+      "CWE191_Integer_Underflow__char_min_sub_67a.c",
+      "CWE191_Integer_Underflow__char_min_sub_67b.c"
+    ]
+  },
+  {
+    "case_id": "CWE191_Integer_Underflow__int_fgets_multiply_54",
+    "cwe": "CWE191_Integer_Underflow",
+    "flow": "54",
+    "files": [
+      "CWE191_Integer_Underflow__int_fgets_multiply_54a.c",
+      "CWE191_Integer_Underflow__int_fgets_multiply_54b.c",
+      "CWE191_Integer_Underflow__int_fgets_multiply_54c.c",
+      "CWE191_Integer_Underflow__int_fgets_multiply_54d.c",
+      "CWE191_Integer_Underflow__int_fgets_multiply_54e.c"
+    ]
+  },
+  {
+    "case_id": "CWE191_Integer_Underflow__unsigned_int_min_predec_10",
+    "cwe": "CWE191_Integer_Underflow",
+    "flow": "10",
+    "files": [
+      "CWE191_Integer_Underflow__unsigned_int_min_predec_10.c"
+    ]
+  },
+  {
+    "case_id": "CWE191_Integer_Underflow__int_connect_socket_predec_03",
+    "cwe": "CWE191_Integer_Underflow",
+    "flow": "03",
+    "files": [
+      "CWE191_Integer_Underflow__int_connect_socket_predec_03.c"
+    ]
+  },
+  {
+    "case_id": "CWE191_Integer_Underflow__int_rand_postdec_32",
+    "cwe": "CWE191_Integer_Underflow",
+    "flow": "32",
+    "files": [
+      "CWE191_Integer_Underflow__int_rand_postdec_32.c"
+    ]
+  },
+  {
+    "case_id": "CWE191_Integer_Underflow__int64_t_rand_multiply_02",
+    "cwe": "CWE191_Integer_Underflow",
+    "flow": "02",
+    "files": [
+      "CWE191_Integer_Underflow__int64_t_rand_multiply_02.c"
+    ]
+  },
+  {
+    "case_id": "CWE191_Integer_Underflow__unsigned_int_fscanf_predec_07",
+    "cwe": "CWE191_Integer_Underflow",
+    "flow": "07",
+    "files": [
+      "CWE191_Integer_Underflow__unsigned_int_fscanf_predec_07.c"
+    ]
+  },
+  {
+    "case_id": "CWE369_Divide_by_Zero__float_fgets_64",
+    "cwe": "CWE369_Divide_by_Zero",
+    "flow": "64",
+    "files": [
+      "CWE369_Divide_by_Zero__float_fgets_64a.c",
+      "CWE369_Divide_by_Zero__float_fgets_64b.c"
+    ]
+  },
+  {
+    "case_id": "CWE369_Divide_by_Zero__int_rand_modulo_67",
+    "cwe": "CWE369_Divide_by_Zero",
+    "flow": "67",
+    "files": [
+      "CWE369_Divide_by_Zero__int_rand_modulo_67a.c",
+      "CWE369_Divide_by_Zero__int_rand_modulo_67b.c"
+    ]
+  },
+  {
+    "case_id": "CWE369_Divide_by_Zero__float_rand_54",
+    "cwe": "CWE369_Divide_by_Zero",
+    "flow": "54",
+    "files": [
+      "CWE369_Divide_by_Zero__float_rand_54a.c",
+      "CWE369_Divide_by_Zero__float_rand_54b.c",
+      "CWE369_Divide_by_Zero__float_rand_54c.c",
+      "CWE369_Divide_by_Zero__float_rand_54d.c",
+      "CWE369_Divide_by_Zero__float_rand_54e.c"
+    ]
+  },
+  {
+    "case_id": "CWE369_Divide_by_Zero__int_listen_socket_divide_73",
+    "cwe": "CWE369_Divide_by_Zero",
+    "flow": "73",
+    "files": [
+      "CWE369_Divide_by_Zero__int_listen_socket_divide_73a.cpp",
+      "CWE369_Divide_by_Zero__int_listen_socket_divide_73b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE369_Divide_by_Zero__float_fscanf_67",
+    "cwe": "CWE369_Divide_by_Zero",
+    "flow": "67",
+    "files": [
+      "CWE369_Divide_by_Zero__float_fscanf_67a.c",
+      "CWE369_Divide_by_Zero__float_fscanf_67b.c"
+    ]
+  },
+  {
+    "case_id": "CWE369_Divide_by_Zero__int_fscanf_divide_03",
+    "cwe": "CWE369_Divide_by_Zero",
+    "flow": "03",
+    "files": [
+      "CWE369_Divide_by_Zero__int_fscanf_divide_03.c"
+    ]
+  },
+  {
+    "case_id": "CWE369_Divide_by_Zero__float_zero_11",
+    "cwe": "CWE369_Divide_by_Zero",
+    "flow": "11",
+    "files": [
+      "CWE369_Divide_by_Zero__float_zero_11.c"
+    ]
+  },
+  {
+    "case_id": "CWE369_Divide_by_Zero__int_rand_modulo_05",
+    "cwe": "CWE369_Divide_by_Zero",
+    "flow": "05",
+    "files": [
+      "CWE369_Divide_by_Zero__int_rand_modulo_05.c"
+    ]
+  },
+  {
+    "case_id": "CWE369_Divide_by_Zero__int_fscanf_modulo_14",
+    "cwe": "CWE369_Divide_by_Zero",
+    "flow": "14",
+    "files": [
+      "CWE369_Divide_by_Zero__int_fscanf_modulo_14.c"
+    ]
+  },
+  {
+    "case_id": "CWE369_Divide_by_Zero__int_fscanf_modulo_09",
+    "cwe": "CWE369_Divide_by_Zero",
+    "flow": "09",
+    "files": [
+      "CWE369_Divide_by_Zero__int_fscanf_modulo_09.c"
+    ]
+  },
+  {
+    "case_id": "CWE401_Memory_Leak__wchar_t_calloc_74",
+    "cwe": "CWE401_Memory_Leak",
+    "flow": "74",
+    "files": [
+      "CWE401_Memory_Leak__wchar_t_calloc_74a.cpp",
+      "CWE401_Memory_Leak__wchar_t_calloc_74b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE401_Memory_Leak__wchar_t_calloc_53",
+    "cwe": "CWE401_Memory_Leak",
+    "flow": "53",
+    "files": [
+      "CWE401_Memory_Leak__wchar_t_calloc_53a.c",
+      "CWE401_Memory_Leak__wchar_t_calloc_53b.c",
+      "CWE401_Memory_Leak__wchar_t_calloc_53c.c",
+      "CWE401_Memory_Leak__wchar_t_calloc_53d.c"
+    ]
+  },
+  {
+    "case_id": "CWE401_Memory_Leak__new_array_int64_t_72",
+    "cwe": "CWE401_Memory_Leak",
+    "flow": "72",
+    "files": [
+      "CWE401_Memory_Leak__new_array_int64_t_72a.cpp",
+      "CWE401_Memory_Leak__new_array_int64_t_72b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE401_Memory_Leak__new_twoIntsStruct_54",
+    "cwe": "CWE401_Memory_Leak",
+    "flow": "54",
+    "files": [
+      "CWE401_Memory_Leak__new_twoIntsStruct_54a.cpp",
+      "CWE401_Memory_Leak__new_twoIntsStruct_54b.cpp",
+      "CWE401_Memory_Leak__new_twoIntsStruct_54c.cpp",
+      "CWE401_Memory_Leak__new_twoIntsStruct_54d.cpp",
+      "CWE401_Memory_Leak__new_twoIntsStruct_54e.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE401_Memory_Leak__int_calloc_64",
+    "cwe": "CWE401_Memory_Leak",
+    "flow": "64",
+    "files": [
+      "CWE401_Memory_Leak__int_calloc_64a.c",
+      "CWE401_Memory_Leak__int_calloc_64b.c"
+    ]
+  },
+  {
+    "case_id": "CWE401_Memory_Leak__int64_t_realloc_03",
+    "cwe": "CWE401_Memory_Leak",
+    "flow": "03",
+    "files": [
+      "CWE401_Memory_Leak__int64_t_realloc_03.c"
+    ]
+  },
+  {
+    "case_id": "CWE401_Memory_Leak__int64_t_calloc_10",
+    "cwe": "CWE401_Memory_Leak",
+    "flow": "10",
+    "files": [
+      "CWE401_Memory_Leak__int64_t_calloc_10.c"
+    ]
+  },
+  {
+    "case_id": "CWE401_Memory_Leak__new_array_int_03",
+    "cwe": "CWE401_Memory_Leak",
+    "flow": "03",
+    "files": [
+      "CWE401_Memory_Leak__new_array_int_03.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE401_Memory_Leak__new_char_44",
+    "cwe": "CWE401_Memory_Leak",
+    "flow": "44",
+    "files": [
+      "CWE401_Memory_Leak__new_char_44.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE401_Memory_Leak__int64_t_realloc_41",
+    "cwe": "CWE401_Memory_Leak",
+    "flow": "41",
+    "files": [
+      "CWE401_Memory_Leak__int64_t_realloc_41.c"
+    ]
+  },
+  {
+    "case_id": "CWE415_Double_Free__new_delete_array_class_74",
+    "cwe": "CWE415_Double_Free",
+    "flow": "74",
+    "files": [
+      "CWE415_Double_Free__new_delete_array_class_74a.cpp",
+      "CWE415_Double_Free__new_delete_array_class_74b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE415_Double_Free__malloc_free_long_63",
+    "cwe": "CWE415_Double_Free",
+    "flow": "63",
+    "files": [
+      "CWE415_Double_Free__malloc_free_long_63a.c",
+      "CWE415_Double_Free__malloc_free_long_63b.c"
+    ]
+  },
+  {
+    "case_id": "CWE415_Double_Free__new_delete_array_wchar_t_74",
+    "cwe": "CWE415_Double_Free",
+    "flow": "74",
+    "files": [
+      "CWE415_Double_Free__new_delete_array_wchar_t_74a.cpp",
+      "CWE415_Double_Free__new_delete_array_wchar_t_74b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE415_Double_Free__new_delete_array_int_64",
+    "cwe": "CWE415_Double_Free",
+    "flow": "64",
+    "files": [
+      "CWE415_Double_Free__new_delete_array_int_64a.cpp",
+      "CWE415_Double_Free__new_delete_array_int_64b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE415_Double_Free__new_delete_int64_t_64",
+    "cwe": "CWE415_Double_Free",
+    "flow": "64",
+    "files": [
+      "CWE415_Double_Free__new_delete_int64_t_64a.cpp",
+      "CWE415_Double_Free__new_delete_int64_t_64b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE415_Double_Free__new_delete_char_10",
+    "cwe": "CWE415_Double_Free",
+    "flow": "10",
+    "files": [
+      "CWE415_Double_Free__new_delete_char_10.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE415_Double_Free__malloc_free_wchar_t_44",
+    "cwe": "CWE415_Double_Free",
+    "flow": "44",
+    "files": [
+      "CWE415_Double_Free__malloc_free_wchar_t_44.c"
+    ]
+  },
+  {
+    "case_id": "CWE415_Double_Free__new_delete_char_16",
+    "cwe": "CWE415_Double_Free",
+    "flow": "16",
+    "files": [
+      "CWE415_Double_Free__new_delete_char_16.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE415_Double_Free__new_delete_array_wchar_t_45",
+    "cwe": "CWE415_Double_Free",
+    "flow": "45",
+    "files": [
+      "CWE415_Double_Free__new_delete_array_wchar_t_45.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE415_Double_Free__new_delete_array_class_21",
+    "cwe": "CWE415_Double_Free",
+    "flow": "21",
+    "files": [
+      "CWE415_Double_Free__new_delete_array_class_21.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE476_NULL_Pointer_Dereference__wchar_t_66",
+    "cwe": "CWE476_NULL_Pointer_Dereference",
+    "flow": "66",
+    "files": [
+      "CWE476_NULL_Pointer_Dereference__wchar_t_66a.c",
+      "CWE476_NULL_Pointer_Dereference__wchar_t_66b.c"
+    ]
+  },
+  {
+    "case_id": "CWE476_NULL_Pointer_Dereference__int64_t_67",
+    "cwe": "CWE476_NULL_Pointer_Dereference",
+    "flow": "67",
+    "files": [
+      "CWE476_NULL_Pointer_Dereference__int64_t_67a.c",
+      "CWE476_NULL_Pointer_Dereference__int64_t_67b.c"
+    ]
+  },
+  {
+    "case_id": "CWE476_NULL_Pointer_Dereference__wchar_t_73",
+    "cwe": "CWE476_NULL_Pointer_Dereference",
+    "flow": "73",
+    "files": [
+      "CWE476_NULL_Pointer_Dereference__wchar_t_73a.cpp",
+      "CWE476_NULL_Pointer_Dereference__wchar_t_73b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE476_NULL_Pointer_Dereference__wchar_t_68",
+    "cwe": "CWE476_NULL_Pointer_Dereference",
+    "flow": "68",
+    "files": [
+      "CWE476_NULL_Pointer_Dereference__wchar_t_68a.c",
+      "CWE476_NULL_Pointer_Dereference__wchar_t_68b.c"
+    ]
+  },
+  {
+    "case_id": "CWE476_NULL_Pointer_Dereference__wchar_t_63",
+    "cwe": "CWE476_NULL_Pointer_Dereference",
+    "flow": "63",
+    "files": [
+      "CWE476_NULL_Pointer_Dereference__wchar_t_63a.c",
+      "CWE476_NULL_Pointer_Dereference__wchar_t_63b.c"
+    ]
+  },
+  {
+    "case_id": "CWE476_NULL_Pointer_Dereference__char_01",
+    "cwe": "CWE476_NULL_Pointer_Dereference",
+    "flow": "01",
+    "files": [
+      "CWE476_NULL_Pointer_Dereference__char_01.c"
+    ]
+  },
+  {
+    "case_id": "CWE476_NULL_Pointer_Dereference__long_16",
+    "cwe": "CWE476_NULL_Pointer_Dereference",
+    "flow": "16",
+    "files": [
+      "CWE476_NULL_Pointer_Dereference__long_16.c"
+    ]
+  },
+  {
+    "case_id": "CWE476_NULL_Pointer_Dereference__long_34",
+    "cwe": "CWE476_NULL_Pointer_Dereference",
+    "flow": "34",
+    "files": [
+      "CWE476_NULL_Pointer_Dereference__long_34.c"
+    ]
+  },
+  {
+    "case_id": "CWE476_NULL_Pointer_Dereference__char_45",
+    "cwe": "CWE476_NULL_Pointer_Dereference",
+    "flow": "45",
+    "files": [
+      "CWE476_NULL_Pointer_Dereference__char_45.c"
+    ]
+  },
+  {
+    "case_id": "CWE476_NULL_Pointer_Dereference__int_34",
+    "cwe": "CWE476_NULL_Pointer_Dereference",
+    "flow": "34",
+    "files": [
+      "CWE476_NULL_Pointer_Dereference__int_34.c"
+    ]
+  },
+  {
+    "case_id": "CWE590_Free_Memory_Not_on_Heap__free_struct_declare_54",
+    "cwe": "CWE590_Free_Memory_Not_on_Heap",
+    "flow": "54",
+    "files": [
+      "CWE590_Free_Memory_Not_on_Heap__free_struct_declare_54a.c",
+      "CWE590_Free_Memory_Not_on_Heap__free_struct_declare_54b.c",
+      "CWE590_Free_Memory_Not_on_Heap__free_struct_declare_54c.c",
+      "CWE590_Free_Memory_Not_on_Heap__free_struct_declare_54d.c",
+      "CWE590_Free_Memory_Not_on_Heap__free_struct_declare_54e.c"
+    ]
+  },
+  {
+    "case_id": "CWE590_Free_Memory_Not_on_Heap__delete_array_wchar_t_static_73",
+    "cwe": "CWE590_Free_Memory_Not_on_Heap",
+    "flow": "73",
+    "files": [
+      "CWE590_Free_Memory_Not_on_Heap__delete_array_wchar_t_static_73a.cpp",
+      "CWE590_Free_Memory_Not_on_Heap__delete_array_wchar_t_static_73b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE590_Free_Memory_Not_on_Heap__delete_array_long_declare_74",
+    "cwe": "CWE590_Free_Memory_Not_on_Heap",
+    "flow": "74",
+    "files": [
+      "CWE590_Free_Memory_Not_on_Heap__delete_array_long_declare_74a.cpp",
+      "CWE590_Free_Memory_Not_on_Heap__delete_array_long_declare_74b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE590_Free_Memory_Not_on_Heap__delete_long_placement_new_65",
+    "cwe": "CWE590_Free_Memory_Not_on_Heap",
+    "flow": "65",
+    "files": [
+      "CWE590_Free_Memory_Not_on_Heap__delete_long_placement_new_65a.cpp",
+      "CWE590_Free_Memory_Not_on_Heap__delete_long_placement_new_65b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE590_Free_Memory_Not_on_Heap__delete_int64_t_static_64",
+    "cwe": "CWE590_Free_Memory_Not_on_Heap",
+    "flow": "64",
+    "files": [
+      "CWE590_Free_Memory_Not_on_Heap__delete_int64_t_static_64a.cpp",
+      "CWE590_Free_Memory_Not_on_Heap__delete_int64_t_static_64b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE590_Free_Memory_Not_on_Heap__delete_char_declare_03",
+    "cwe": "CWE590_Free_Memory_Not_on_Heap",
+    "flow": "03",
+    "files": [
+      "CWE590_Free_Memory_Not_on_Heap__delete_char_declare_03.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE590_Free_Memory_Not_on_Heap__free_int64_t_alloca_11",
+    "cwe": "CWE590_Free_Memory_Not_on_Heap",
+    "flow": "11",
+    "files": [
+      "CWE590_Free_Memory_Not_on_Heap__free_int64_t_alloca_11.c"
+    ]
+  },
+  {
+    "case_id": "CWE590_Free_Memory_Not_on_Heap__free_int_declare_10",
+    "cwe": "CWE590_Free_Memory_Not_on_Heap",
+    "flow": "10",
+    "files": [
+      "CWE590_Free_Memory_Not_on_Heap__free_int_declare_10.c"
+    ]
+  },
+  {
+    "case_id": "CWE590_Free_Memory_Not_on_Heap__delete_wchar_t_alloca_16",
+    "cwe": "CWE590_Free_Memory_Not_on_Heap",
+    "flow": "16",
+    "files": [
+      "CWE590_Free_Memory_Not_on_Heap__delete_wchar_t_alloca_16.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE590_Free_Memory_Not_on_Heap__delete_array_struct_static_45",
+    "cwe": "CWE590_Free_Memory_Not_on_Heap",
+    "flow": "45",
+    "files": [
+      "CWE590_Free_Memory_Not_on_Heap__delete_array_struct_static_45.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE690_NULL_Deref_From_Return__long_malloc_52",
+    "cwe": "CWE690_NULL_Deref_From_Return",
+    "flow": "52",
+    "files": [
+      "CWE690_NULL_Deref_From_Return__long_malloc_52a.c",
+      "CWE690_NULL_Deref_From_Return__long_malloc_52b.c",
+      "CWE690_NULL_Deref_From_Return__long_malloc_52c.c"
+    ]
+  },
+  {
+    "case_id": "CWE690_NULL_Deref_From_Return__char_malloc_73",
+    "cwe": "CWE690_NULL_Deref_From_Return",
+    "flow": "73",
+    "files": [
+      "CWE690_NULL_Deref_From_Return__char_malloc_73a.cpp",
+      "CWE690_NULL_Deref_From_Return__char_malloc_73b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE690_NULL_Deref_From_Return__int_calloc_72",
+    "cwe": "CWE690_NULL_Deref_From_Return",
+    "flow": "72",
+    "files": [
+      "CWE690_NULL_Deref_From_Return__int_calloc_72a.cpp",
+      "CWE690_NULL_Deref_From_Return__int_calloc_72b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE690_NULL_Deref_From_Return__char_malloc_52",
+    "cwe": "CWE690_NULL_Deref_From_Return",
+    "flow": "52",
+    "files": [
+      "CWE690_NULL_Deref_From_Return__char_malloc_52a.c",
+      "CWE690_NULL_Deref_From_Return__char_malloc_52b.c",
+      "CWE690_NULL_Deref_From_Return__char_malloc_52c.c"
+    ]
+  },
+  {
+    "case_id": "CWE690_NULL_Deref_From_Return__long_calloc_68",
+    "cwe": "CWE690_NULL_Deref_From_Return",
+    "flow": "68",
+    "files": [
+      "CWE690_NULL_Deref_From_Return__long_calloc_68a.c",
+      "CWE690_NULL_Deref_From_Return__long_calloc_68b.c"
+    ]
+  },
+  {
+    "case_id": "CWE690_NULL_Deref_From_Return__struct_malloc_21",
+    "cwe": "CWE690_NULL_Deref_From_Return",
+    "flow": "21",
+    "files": [
+      "CWE690_NULL_Deref_From_Return__struct_malloc_21.c"
+    ]
+  },
+  {
+    "case_id": "CWE690_NULL_Deref_From_Return__int_realloc_34",
+    "cwe": "CWE690_NULL_Deref_From_Return",
+    "flow": "34",
+    "files": [
+      "CWE690_NULL_Deref_From_Return__int_realloc_34.c"
+    ]
+  },
+  {
+    "case_id": "CWE690_NULL_Deref_From_Return__char_realloc_12",
+    "cwe": "CWE690_NULL_Deref_From_Return",
+    "flow": "12",
+    "files": [
+      "CWE690_NULL_Deref_From_Return__char_realloc_12.c"
+    ]
+  },
+  {
+    "case_id": "CWE690_NULL_Deref_From_Return__int_calloc_32",
+    "cwe": "CWE690_NULL_Deref_From_Return",
+    "flow": "32",
+    "files": [
+      "CWE690_NULL_Deref_From_Return__int_calloc_32.c"
+    ]
+  },
+  {
+    "case_id": "CWE690_NULL_Deref_From_Return__long_malloc_15",
+    "cwe": "CWE690_NULL_Deref_From_Return",
+    "flow": "15",
+    "files": [
+      "CWE690_NULL_Deref_From_Return__long_malloc_15.c"
+    ]
+  },
+  {
+    "case_id": "CWE762_Mismatched_Memory_Management_Routines__delete_int64_t_malloc_73",
+    "cwe": "CWE762_Mismatched_Memory_Management_Routines",
+    "flow": "73",
+    "files": [
+      "CWE762_Mismatched_Memory_Management_Routines__delete_int64_t_malloc_73a.cpp",
+      "CWE762_Mismatched_Memory_Management_Routines__delete_int64_t_malloc_73b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE762_Mismatched_Memory_Management_Routines__new_free_long_66",
+    "cwe": "CWE762_Mismatched_Memory_Management_Routines",
+    "flow": "66",
+    "files": [
+      "CWE762_Mismatched_Memory_Management_Routines__new_free_long_66a.cpp",
+      "CWE762_Mismatched_Memory_Management_Routines__new_free_long_66b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE762_Mismatched_Memory_Management_Routines__new_array_free_long_66",
+    "cwe": "CWE762_Mismatched_Memory_Management_Routines",
+    "flow": "66",
+    "files": [
+      "CWE762_Mismatched_Memory_Management_Routines__new_array_free_long_66a.cpp",
+      "CWE762_Mismatched_Memory_Management_Routines__new_array_free_long_66b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE762_Mismatched_Memory_Management_Routines__new_delete_array_wchar_t_53",
+    "cwe": "CWE762_Mismatched_Memory_Management_Routines",
+    "flow": "53",
+    "files": [
+      "CWE762_Mismatched_Memory_Management_Routines__new_delete_array_wchar_t_53a.cpp",
+      "CWE762_Mismatched_Memory_Management_Routines__new_delete_array_wchar_t_53b.cpp",
+      "CWE762_Mismatched_Memory_Management_Routines__new_delete_array_wchar_t_53c.cpp",
+      "CWE762_Mismatched_Memory_Management_Routines__new_delete_array_wchar_t_53d.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE762_Mismatched_Memory_Management_Routines__delete_array_wchar_t_malloc_62",
+    "cwe": "CWE762_Mismatched_Memory_Management_Routines",
+    "flow": "62",
+    "files": [
+      "CWE762_Mismatched_Memory_Management_Routines__delete_array_wchar_t_malloc_62a.cpp",
+      "CWE762_Mismatched_Memory_Management_Routines__delete_array_wchar_t_malloc_62b.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE762_Mismatched_Memory_Management_Routines__delete_struct_realloc_32",
+    "cwe": "CWE762_Mismatched_Memory_Management_Routines",
+    "flow": "32",
+    "files": [
+      "CWE762_Mismatched_Memory_Management_Routines__delete_struct_realloc_32.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE762_Mismatched_Memory_Management_Routines__delete_array_wchar_t_realloc_12",
+    "cwe": "CWE762_Mismatched_Memory_Management_Routines",
+    "flow": "12",
+    "files": [
+      "CWE762_Mismatched_Memory_Management_Routines__delete_array_wchar_t_realloc_12.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE762_Mismatched_Memory_Management_Routines__delete_struct_calloc_03",
+    "cwe": "CWE762_Mismatched_Memory_Management_Routines",
+    "flow": "03",
+    "files": [
+      "CWE762_Mismatched_Memory_Management_Routines__delete_struct_calloc_03.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE762_Mismatched_Memory_Management_Routines__delete_struct_realloc_13",
+    "cwe": "CWE762_Mismatched_Memory_Management_Routines",
+    "flow": "13",
+    "files": [
+      "CWE762_Mismatched_Memory_Management_Routines__delete_struct_realloc_13.cpp"
+    ]
+  },
+  {
+    "case_id": "CWE762_Mismatched_Memory_Management_Routines__new_delete_array_wchar_t_21",
+    "cwe": "CWE762_Mismatched_Memory_Management_Routines",
+    "flow": "21",
+    "files": [
+      "CWE762_Mismatched_Memory_Management_Routines__new_delete_array_wchar_t_21.cpp"
+    ]
+  }
+]

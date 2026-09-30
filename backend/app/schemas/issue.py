@@ -29,4 +29,9 @@ class ReviewIssueRead(BaseModel):
     ast_context: dict[str, Any] = Field(default_factory=dict)
     dependencies: list[str] = Field(default_factory=list)
     code_snippet: str | None = None
+    # Fusion metadata: CWE, which detectors reported it ("tool:rule"), and how
+    # it was decided: consensus | review | unreviewed | quality | project-rule.
+    cwe: str | None = None
+    sources: list[str] = Field(default_factory=list)
+    review_route: str | None = None
     created_at: datetime

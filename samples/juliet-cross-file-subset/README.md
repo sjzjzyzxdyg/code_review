@@ -1,6 +1,6 @@
 # Juliet Cross-File Test Subset
 
-120 test cases (10 per CWE, 12 CWEs) pulled from the [Juliet Test Suite for
+60 test cases (5 per CWE, 12 CWEs; 120 files) pulled from the [Juliet Test Suite for
 C/C++ v1.3](https://samate.nist.gov/SARD/test-suites/112) (NIST SARD),
 via the [arichardson/juliet-test-suite-c](https://github.com/arichardson/juliet-test-suite-c)
 GitHub mirror.
@@ -40,6 +40,11 @@ files. Cases the tool misses are false negatives worth investigating;
 cases it flags that don't correspond to the actual CWE are false
 positives.
 
+## Evaluation
+
+This is the **dev split** used for tuning. Headline numbers come from the
+held-out split in `../juliet-heldout`. See `backend/eval/README.md`.
+
 ## Using it
 
 No zip needed — this is already a plain folder. Register it directly:
@@ -54,11 +59,9 @@ or in the UI: Project → Folder → paste the absolute path → Register.
 
 ## Limitations
 
-- Only the two `a`/`b` files per case are included — not Juliet's shared
-  `testcasesupport/` headers (`std_testcase.h`, `io.h`, ...). cppcheck and
-  clang's `--analyze` don't need a fully resolvable include graph to find
-  most of these bugs, but you'll see `#include` warnings if you try to
-  actually compile these files.
+- Juliet's shared headers (`std_testcase.h` and friends) are in
+  `testcasesupport/`. The review pipeline picks that folder up as an include
+  path. Without it, `clang --analyze` can't parse any file.
 - This is a hand-picked 120-file slice of the ~64,000-file full suite,
   not the whole thing. If you want broader coverage, the same mirror
   repo has every CWE and every flow variant.

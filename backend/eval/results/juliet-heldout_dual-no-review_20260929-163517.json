@@ -1,0 +1,332 @@
+{
+  "tag": "dual-no-review",
+  "timestamp": "2026-09-29T16:35:17",
+  "dataset": "C:\\Users\\13000\\Desktop\\项目\\code_review\\samples\\juliet-heldout",
+  "sanitized": true,
+  "detectors": [
+    "cppcheck",
+    "clang",
+    "clang_custom",
+    "cross_file",
+    "semantic_audit"
+  ],
+  "llm_enabled": true,
+  "llm_model": "qwen-flash",
+  "max_llm_reviews": 0,
+  "task_status": "failed",
+  "task_error": "Cppcheck is not installed or not available in PATH.",
+  "seconds": 79.7,
+  "llm_usage": {
+    "semantic_audit_agent": {
+      "calls": 26,
+      "prompt_tokens": 133204,
+      "completion_tokens": 20883
+    },
+    "llm_review_agent": {
+      "calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0
+    },
+    "taint_flow_agent": {
+      "calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0
+    }
+  },
+  "scores": {
+    "raw": {
+      "cases": 120,
+      "recall": 0.7,
+      "precision": 0.6043,
+      "f1": 0.6486,
+      "good_fp_rate": 0.4583,
+      "loose_recall": 0.8,
+      "bad_flagged": 84,
+      "good_flagged": 55,
+      "findings": {
+        "bad": 106,
+        "good": 98,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "raw_security": {
+      "cases": 120,
+      "recall": 0.7,
+      "precision": 0.6043,
+      "f1": 0.6486,
+      "good_fp_rate": 0.4583,
+      "loose_recall": 0.8,
+      "bad_flagged": 84,
+      "good_flagged": 55,
+      "findings": {
+        "bad": 106,
+        "good": 98,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "valid": {
+      "cases": 120,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "security": {
+      "cases": 120,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    }
+  },
+  "security_by_route": {},
+  "review_rejected": {
+    "cases": 120,
+    "recall": 0.0,
+    "precision": 0.0,
+    "f1": 0.0,
+    "good_fp_rate": 0.0,
+    "loose_recall": 0.0,
+    "bad_flagged": 0,
+    "good_flagged": 0,
+    "findings": {
+      "bad": 0,
+      "good": 0,
+      "neutral": 0,
+      "outside_dataset": 0
+    }
+  },
+  "route_counts": {},
+  "raw_security_by_tool": {
+    "llm-semantic": {
+      "cases": 120,
+      "recall": 0.7,
+      "precision": 0.6043,
+      "f1": 0.6486,
+      "good_fp_rate": 0.4583,
+      "loose_recall": 0.8,
+      "bad_flagged": 84,
+      "good_flagged": 55,
+      "findings": {
+        "bad": 106,
+        "good": 98,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    }
+  },
+  "security_by_cwe": {
+    "CWE121_Stack_Based_Buffer_Overflow": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE122_Heap_Based_Buffer_Overflow": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE134_Uncontrolled_Format_String": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE190_Integer_Overflow": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE191_Integer_Underflow": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE369_Divide_by_Zero": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE401_Memory_Leak": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE415_Double_Free": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE476_NULL_Pointer_Dereference": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE590_Free_Memory_Not_on_Heap": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE690_NULL_Deref_From_Return": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE762_Mismatched_Memory_Management_Routines": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    }
+  }
+}

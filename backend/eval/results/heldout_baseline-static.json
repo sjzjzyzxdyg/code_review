@@ -1,0 +1,323 @@
+{
+  "tag": "baseline-static",
+  "timestamp": "2026-09-29T14:52:53",
+  "dataset": "samples/juliet-heldout",
+  "detectors": [
+    "cppcheck",
+    "clang",
+    "clang_custom",
+    "cross_file",
+    "taint_flow"
+  ],
+  "llm_enabled": false,
+  "llm_model": null,
+  "task_status": "completed",
+  "task_error": null,
+  "seconds": 66.8,
+  "llm_usage": {
+    "llm_review_agent": {
+      "calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0
+    },
+    "taint_flow_agent": {
+      "calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0
+    }
+  },
+  "scores": {
+    "raw": {
+      "cases": 120,
+      "recall": 0.725,
+      "precision": 0.4807,
+      "f1": 0.5781,
+      "good_fp_rate": 0.7833,
+      "loose_recall": 0.85,
+      "bad_flagged": 87,
+      "good_flagged": 94,
+      "findings": {
+        "bad": 195,
+        "good": 331,
+        "neutral": 1,
+        "outside_dataset": 0
+      }
+    },
+    "reported": {
+      "cases": 120,
+      "recall": 0.1583,
+      "precision": 0.6129,
+      "f1": 0.2517,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.1833,
+      "bad_flagged": 19,
+      "good_flagged": 12,
+      "findings": {
+        "bad": 25,
+        "good": 14,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "valid": {
+      "cases": 120,
+      "recall": 0.1583,
+      "precision": 0.6129,
+      "f1": 0.2517,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.1833,
+      "bad_flagged": 19,
+      "good_flagged": 12,
+      "findings": {
+        "bad": 25,
+        "good": 14,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    }
+  },
+  "raw_by_tool": {
+    "clang": {
+      "cases": 120,
+      "recall": 0.3583,
+      "precision": 0.5,
+      "f1": 0.4175,
+      "good_fp_rate": 0.3583,
+      "loose_recall": 0.4917,
+      "bad_flagged": 43,
+      "good_flagged": 43,
+      "findings": {
+        "bad": 45,
+        "good": 67,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "clang-cross-file": {
+      "cases": 120,
+      "recall": 0.075,
+      "precision": 0.4286,
+      "f1": 0.1277,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.1,
+      "bad_flagged": 9,
+      "good_flagged": 12,
+      "findings": {
+        "bad": 17,
+        "good": 28,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "cppcheck": {
+      "cases": 120,
+      "recall": 0.5667,
+      "precision": 0.469,
+      "f1": 0.5132,
+      "good_fp_rate": 0.6417,
+      "loose_recall": 0.675,
+      "bad_flagged": 68,
+      "good_flagged": 77,
+      "findings": {
+        "bad": 133,
+        "good": 236,
+        "neutral": 1,
+        "outside_dataset": 0
+      }
+    }
+  },
+  "valid_by_cwe": {
+    "CWE121_Stack_Based_Buffer_Overflow": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE122_Heap_Based_Buffer_Overflow": {
+      "cases": 10,
+      "recall": 0.3,
+      "precision": 0.6,
+      "f1": 0.4,
+      "good_fp_rate": 0.2,
+      "loose_recall": 0.4,
+      "bad_flagged": 3,
+      "good_flagged": 2,
+      "findings": {
+        "bad": 3,
+        "good": 4,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE134_Uncontrolled_Format_String": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE190_Integer_Overflow": {
+      "cases": 10,
+      "recall": 0.1,
+      "precision": 1.0,
+      "f1": 0.1818,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.1,
+      "bad_flagged": 1,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 1,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE191_Integer_Underflow": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.0,
+      "bad_flagged": 0,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 0,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE369_Divide_by_Zero": {
+      "cases": 10,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.1,
+      "bad_flagged": 0,
+      "good_flagged": 1,
+      "findings": {
+        "bad": 0,
+        "good": 1,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE401_Memory_Leak": {
+      "cases": 10,
+      "recall": 0.4,
+      "precision": 0.5,
+      "f1": 0.4444,
+      "good_fp_rate": 0.4,
+      "loose_recall": 0.4,
+      "bad_flagged": 4,
+      "good_flagged": 4,
+      "findings": {
+        "bad": 4,
+        "good": 4,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE415_Double_Free": {
+      "cases": 10,
+      "recall": 0.1,
+      "precision": 1.0,
+      "f1": 0.1818,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.1,
+      "bad_flagged": 1,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 1,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE476_NULL_Pointer_Dereference": {
+      "cases": 10,
+      "recall": 0.2,
+      "precision": 0.6667,
+      "f1": 0.3077,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.2,
+      "bad_flagged": 2,
+      "good_flagged": 1,
+      "findings": {
+        "bad": 2,
+        "good": 1,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE590_Free_Memory_Not_on_Heap": {
+      "cases": 10,
+      "recall": 0.4,
+      "precision": 1.0,
+      "f1": 0.5714,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.4,
+      "bad_flagged": 4,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 10,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE690_NULL_Deref_From_Return": {
+      "cases": 10,
+      "recall": 0.2,
+      "precision": 0.5,
+      "f1": 0.2857,
+      "good_fp_rate": 0.2,
+      "loose_recall": 0.2,
+      "bad_flagged": 2,
+      "good_flagged": 2,
+      "findings": {
+        "bad": 2,
+        "good": 2,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE762_Mismatched_Memory_Management_Routines": {
+      "cases": 10,
+      "recall": 0.2,
+      "precision": 0.5,
+      "f1": 0.2857,
+      "good_fp_rate": 0.2,
+      "loose_recall": 0.3,
+      "bad_flagged": 2,
+      "good_flagged": 2,
+      "findings": {
+        "bad": 2,
+        "good": 2,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    }
+  }
+}

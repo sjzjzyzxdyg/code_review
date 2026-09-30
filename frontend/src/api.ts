@@ -49,6 +49,9 @@ export type ReviewIssue = {
   };
   dependencies: string[];
   code_snippet?: string;
+  cwe?: string | null;
+  sources?: string[];
+  review_route?: "consensus" | "review" | "unreviewed" | "quality" | "project-rule" | null;
   created_at: string;
 };
 

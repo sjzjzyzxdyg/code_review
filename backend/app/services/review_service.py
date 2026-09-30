@@ -9,11 +9,18 @@ from uuid import uuid4
 from fastapi import HTTPException, status
 
 from app.agents.llm_review_agent import LLMReviewAgent
+from app.agents.semantic_audit_agent import SemanticAuditAgent
+from app.agents.semantic_rule_agent import SemanticRuleAgent
 from app.agents.report_generation_agent import ReportGenerationAgent
 from app.agents.result_validation_agent import ResultValidationAgent
+from app.core.config import settings  # noqa: F401  (patched by tests)
 from app.core.db import Database, get_db
+from app.core.llm_client import llm_available
 from app.schemas.issue import ReviewIssueRead
 from app.schemas.review import ReviewTaskCreate, ReviewTaskDiff, ReviewTaskRead
+from app.services.context_builder import context_builder
+from app.services.fusion import LLM, Cluster, FusionResult, path_of
+from app.services.review_graph import build_review_graph
 from app.services.issue_service import issue_service
 from app.services.project_service import project_service
 from app.services.report_service import report_service
@@ -28,14 +35,8 @@ from app.tools.cppcheck_tool import CppcheckTool, StaticAnalysisToolUnavailable
 logger = logging.getLogger(__name__)
 
 _PARALLEL_WORKERS = 4   # keep DeepSeek concurrent connections low to avoid SSL drops
-_DETECT_WORKERS   = 5   # cppcheck + clang + clang_custom + cross_file + taint_flow
-_MAX_LLM_FINDINGS = 40  # cap before LLM review to prevent timeout
+_DETECT_WORKERS   = 7   # cppcheck, clang, clang_custom, cross_file, semantic_audit, (taint_flow, semantic_rules)
 
-# Lower value → reviewed first when over the cap
-_SEVERITY_PRIORITY: dict[str, int] = {
-    "error": 0, "warning": 1,
-    "style": 2, "performance": 3, "portability": 3, "information": 4,
-}
 _RISK_RANK: dict[str, int] = {"low": 0, "medium": 1, "high": 2, "critical": 3}
 
 _IN_PROGRESS_STATUSES = {
@@ -56,9 +57,12 @@ class ReviewService:
         self.clang_custom_checker   = ClangCustomCheckerTool()
         self.cross_file_checker     = CrossFileChecker()
         self.taint_flow_agent       = TaintFlowAgent()
+        self.semantic_audit_agent   = SemanticAuditAgent()
+        self.semantic_rule_agent    = SemanticRuleAgent()
         self.llm_review_agent       = LLMReviewAgent()
         self.result_validation_agent = ResultValidationAgent()
         self.report_generation_agent = ReportGenerationAgent()
+        self._graph = build_review_graph(self)
 
     def create_task(self, payload: ReviewTaskCreate) -> ReviewTaskRead:
         project_service.get_project(payload.project_id)
@@ -150,64 +154,14 @@ class ReviewService:
             )
 
         try:
-            scan_path    = project_service.resolve_project_path(task.project_id, task.scan_scope)
-            project_root = Path(project_service.get_project(task.project_id).local_path or "")
-            include_paths = self._discover_include_paths(project_root, scan_path)
-
-            # ── Incremental cppcheck: reuse cached findings for files whose
-            #    content hasn't changed since this project's last scan ───────
-            cppcheck_enabled = bool(task.rule_config.get("cppcheck", True))
-            if cppcheck_enabled:
-                file_cache = self._load_file_cache(task.project_id)
-                current_hashes = self._hash_source_files(scan_path)
-                cppcheck_target_files, cached_cppcheck_findings, rescanned_rels = (
-                    self._plan_incremental_cppcheck(file_cache, current_hashes, scan_path)
-                )
-            else:
-                cppcheck_target_files, cached_cppcheck_findings, rescanned_rels = None, [], set()
-
-            # clang_custom_checker and cross_file_checker share one AST dump
-            # per file (see clang_ast.py); clear it so a file that changed
-            # since the last scan of this (or any) project never serves a
-            # stale dump.
-            clang_ast.clear_cache()
-
-            # ── Phase 1: Detection (all tools in parallel) ────────────────────
-            static_findings, taint_issues, fresh_cppcheck_findings = self._run_detection_parallel(
-                scan_path, task.rule_config, task_id, include_paths,
-                cppcheck_target_files=cppcheck_target_files,
-            )
-            static_findings = static_findings + cached_cppcheck_findings
-
-            if cppcheck_enabled:
-                self._save_file_cache(
-                    task.project_id, scan_path, current_hashes, file_cache,
-                    fresh_cppcheck_findings, rescanned_rels,
-                )
-
-            # ── Phase 2: Drop findings the user already marked false-positive,
-            #             then prioritise + cap before LLM review ─────────────
-            static_findings = self._filter_suppressed(static_findings, task.project_id, scan_path)
-            static_findings = self._prioritize_findings(static_findings)
-
-            # ── Phase 3: LLM review of static findings (parallel) ────────────
-            self._update_task(task_id, status="llm_reviewing")
-            review_results = self._llm_review_parallel(static_findings, scan_path)
-
-            # ── Phase 4: Build & deduplicate issues ───────────────────────────
-            self._update_task(task_id, status="result_validating")
-            issues = self._build_issues(
-                task_id, static_findings, review_results, taint_issues, scan_path,
-            )
-            issue_service.replace_task_issues(task_id, issues)
-
-            # ── Phase 5: Report generation ────────────────────────────────────
-            self._update_task(task_id, status="report_generating")
-            generating_task = self.get_task(task_id)
-            markdown     = self.report_generation_agent.generate_markdown(generating_task, issues)
-            json_payload = self.report_generation_agent.generate_json(generating_task, issues)
-            summary      = self.report_generation_agent.summarize(issues)
-            report_service.create_report(task_id, markdown, json_payload, summary)
+            # Control flow (parallel static/LLM detection, join, conditional
+            # review) lives in the LangGraph state graph: see review_graph.py.
+            self._graph.invoke({
+                "task_id": task_id,
+                "project_id": task.project_id,
+                "scan_scope": task.scan_scope,
+                "rule_config": task.rule_config,
+            })
 
         except StaticAnalysisToolUnavailable as exc:
             # User-actionable (e.g. "install cppcheck") and safe to show as-is.
@@ -236,6 +190,50 @@ class ReviewService:
 
     # ── Pipeline helpers ───────────────────────────────────────────────────────
 
+    # ── Graph node implementations (called from review_graph.py) ─────────────
+
+    @staticmethod
+    def _llm_available() -> bool:
+        return llm_available()
+
+    def prepare_scan(self, project_id: str, scan_scope: str, rule_config: dict) -> dict:
+        scan_path = project_service.resolve_project_path(project_id, scan_scope)
+        project_root = Path(project_service.get_project(project_id).local_path or "")
+        include_paths = self._discover_include_paths(project_root, scan_path)
+
+        # Incremental cppcheck: reuse cached findings for files whose content
+        # hasn't changed since this project's last scan.
+        plan: dict = {"enabled": bool(rule_config.get("cppcheck", True)), "target_files": None,
+                      "cached_findings": [], "rescanned": set()}
+        if plan["enabled"]:
+            plan["file_cache"] = self._load_file_cache(project_id)
+            plan["hashes"] = self._hash_source_files(scan_path)
+            plan["target_files"], plan["cached_findings"], plan["rescanned"] = (
+                self._plan_incremental_cppcheck(plan["file_cache"], plan["hashes"], scan_path)
+            )
+
+        # clang_custom_checker and cross_file_checker share one AST dump per
+        # file (see clang_ast.py); clear it so a file that changed since the
+        # last scan never serves a stale dump.
+        clang_ast.clear_cache()
+        return {"scan_path": scan_path, "include_paths": include_paths, "cppcheck_plan": plan}
+
+    def save_cppcheck_cache(self, project_id: str, scan_path: Path, plan: dict, fresh_findings: list[dict]) -> None:
+        if plan.get("enabled"):
+            self._save_file_cache(
+                project_id, scan_path, plan["hashes"], plan["file_cache"], fresh_findings, plan["rescanned"],
+            )
+
+    def persist_issues(self, task_id: str, issues: list[ReviewIssueRead]) -> None:
+        issue_service.replace_task_issues(task_id, issues)
+
+    def generate_report(self, task_id: str, issues: list[ReviewIssueRead]) -> None:
+        task = self.get_task(task_id)
+        markdown = self.report_generation_agent.generate_markdown(task, issues)
+        json_payload = self.report_generation_agent.generate_json(task, issues)
+        summary = self.report_generation_agent.summarize(issues)
+        report_service.create_report(task_id, markdown, json_payload, summary)
+
     def _discover_include_paths(self, project_root: Path, scan_path: Path) -> list[Path]:
         """Return header directories in project_root that are outside scan_path."""
         if not project_root.is_dir():
@@ -253,15 +251,28 @@ class ReviewService:
                 result.append(child)
         return result
 
-    def _run_detection_parallel(
-        self, scan_path: Path, rule_config: dict, task_id: str,
+    def _run_detectors(
+        self, detectors: tuple[str, ...], scan_path: Path, rule_config: dict, task_id: str,
         include_paths: list[Path] | None = None,
         cppcheck_target_files: list[Path] | None = None,
     ) -> tuple[list[dict], list[ReviewIssueRead], list[dict]]:
+        """Run the enabled detectors among ``detectors`` concurrently. The
+        graph calls this once for the static path and once for the LLM path.
+
+        Returns (findings, rule_issues, cppcheck_findings):
+        - findings: uniform detector dicts from both paths (static tools and
+          LLM agents), to be fused;
+        - rule_issues: project-rule issues from SemanticRuleAgent, which are
+          not vulnerabilities and bypass fusion;
+        - cppcheck_findings: this run's fresh cppcheck output, for the cache.
+        """
         with concurrent.futures.ThreadPoolExecutor(max_workers=_DETECT_WORKERS) as pool:
             pending: dict[str, tuple[concurrent.futures.Future, bool]] = {}
 
-            if rule_config.get("cppcheck", True):
+            def enabled(name: str, default: bool) -> bool:
+                return name in detectors and bool(rule_config.get(name, default))
+
+            if enabled("cppcheck", True):
                 rule_level = str(rule_config.get("cppcheck_enable", "all"))
                 rule_files = [Path(p) for p in rule_config.get("cppcheck_rule_files", [])]
                 pending["cppcheck"] = (
@@ -273,16 +284,24 @@ class ReviewService:
                     True,
                 )
 
-            pending["clang"]        = (pool.submit(self.clang_analyzer_tool.run, scan_path, include_paths), False)
-            pending["clang_custom"] = (pool.submit(self.clang_custom_checker.run, scan_path, include_paths), False)
-
-            if rule_config.get("cross_file", False):
+            if enabled("clang", True):
+                pending["clang"] = (pool.submit(self.clang_analyzer_tool.run, scan_path, include_paths), False)
+            if enabled("clang_custom", True):
+                pending["clang_custom"] = (pool.submit(self.clang_custom_checker.run, scan_path, include_paths), False)
+            if enabled("cross_file", False):
                 pending["cross_file"] = (pool.submit(self.cross_file_checker.run, scan_path, include_paths), False)
 
-            pending["taint_flow"] = (pool.submit(self.taint_flow_agent.run, scan_path, task_id), False)
+            # LLM path. semantic_audit is the general-purpose auditor; the older
+            # taint_flow agent (tuned for split-file taint cases) is opt-in.
+            if enabled("semantic_audit", True):
+                pending["semantic_audit"] = (pool.submit(self.semantic_audit_agent.run, scan_path, task_id), False)
+            if enabled("taint_flow", False):
+                pending["taint_flow"] = (pool.submit(self.taint_flow_agent.run, scan_path, task_id), False)
+            if enabled("semantic_rules", False):
+                pending["semantic_rules"] = (pool.submit(self.semantic_rule_agent.run, scan_path, task_id), False)
 
-            static_findings: list[dict] = []
-            taint_issues: list[ReviewIssueRead] = []
+            findings: list[dict] = []
+            rule_issues: list[ReviewIssueRead] = []
             cppcheck_findings: list[dict] = []
 
             for key, (future, fatal) in pending.items():
@@ -297,14 +316,16 @@ class ReviewService:
                     logger.exception("Detection tool %r failed unexpectedly; skipping.", key)
                     result = []
 
-                if key == "taint_flow":
-                    taint_issues = result or []
+                if key == "semantic_rules":
+                    rule_issues = list(result or [])
+                elif key == "taint_flow":
+                    findings.extend(_issue_to_finding(issue, "llm-taint") for issue in result or [])
                 else:
-                    static_findings.extend(result or [])
+                    findings.extend(result or [])
                     if key == "cppcheck":
                         cppcheck_findings = result or []
 
-        return static_findings, taint_issues, cppcheck_findings
+        return findings, rule_issues, cppcheck_findings
 
     # ── Incremental cppcheck scanning ────────────────────────────────────────
 
@@ -384,85 +405,113 @@ class ReviewService:
             kept.append(finding)
         return kept
 
-    def _prioritize_findings(self, findings: list[dict]) -> list[dict]:
-        """Sort by severity (errors first) and cap to _MAX_LLM_FINDINGS."""
-        if len(findings) <= _MAX_LLM_FINDINGS:
-            return findings
-        sorted_findings = sorted(
-            findings,
-            key=lambda f: _SEVERITY_PRIORITY.get(str(f.get("severity", "")).lower(), 99),
-        )
-        return sorted_findings[:_MAX_LLM_FINDINGS]
-
-    def _llm_review_parallel(self, findings: list[dict], scan_path: Path) -> list[dict]:
-        if not findings:
-            return []
+    def _review_clusters(self, clusters: list[Cluster], scan_path: Path) -> dict[int, dict]:
+        """Run the review agent on each cluster in parallel. Returns
+        {id(cluster): raw verdict}; clusters whose review failed are absent
+        and keep their detector verdict."""
+        if not clusters:
+            return {}
         scan_root = str(scan_path.resolve())
+        verdicts: dict[int, dict] = {}
         with concurrent.futures.ThreadPoolExecutor(max_workers=_PARALLEL_WORKERS) as pool:
-            futures = [
-                pool.submit(self.llm_review_agent.review, {"finding": f, "scan_root": scan_root})
-                for f in findings
-            ]
-            results: list[dict] = []
-            for finding, fut in zip(findings, futures):
+            futures = {
+                pool.submit(self.llm_review_agent.review, {
+                    "finding": _review_payload(cluster),
+                    "scan_root": scan_root,
+                }): cluster
+                for cluster in clusters
+            }
+            for future in concurrent.futures.as_completed(futures):
+                cluster = futures[future]
                 try:
-                    results.append(fut.result())
+                    verdicts[id(cluster)] = future.result()
                 except Exception:
-                    # API failure: fall back to static severity rather than aborting the task
-                    logger.exception("LLM review failed for finding %r; using static severity.", finding.get("rule_id"))
-                    sev = str(finding.get("severity", "warning")).lower()
-                    results.append({
-                        "is_valid": True,
-                        "risk_level": issue_service._normalize_risk_level(sev),
-                        "issue_type": str(finding.get("rule_id") or "static-analysis"),
-                        "description": str(finding.get("message") or "Static analysis finding"),
-                        "reason": "LLM review unavailable (API error); verdict from static tool only.",
-                        "fix_suggestion": "Review the highlighted code path.",
-                        "confidence": 0.45,
-                    })
-            return results
+                    logger.exception(
+                        "LLM review failed for %s:%s; keeping detector verdict.",
+                        cluster.file_key, min(cluster.lines),
+                    )
+        return verdicts
 
     def _build_issues(
         self,
         task_id: str,
-        static_findings: list[dict],
-        review_results: list[dict],
-        taint_issues: list[ReviewIssueRead],
+        fusion: FusionResult,
+        review_results: dict[int, dict],
+        rule_issues: list[ReviewIssueRead],
         scan_path: Path,
     ) -> list[ReviewIssueRead]:
         issues: list[ReviewIssueRead] = []
 
-        # Static findings reviewed by LLM
-        for finding, review_result in zip(static_findings, review_results):
-            validated = self.result_validation_agent.validate(review_result)
-            issue = issue_service.create_from_review_result(
-                task_id=task_id,
-                finding=self._make_finding_relative(finding, scan_path),
-                review_result=validated,
-                code_snippet=None,
-                ast_summary=None,
-                ast_context={},
-                call_chain=[],
-                call_chain_graph={},
-                dependencies=[],
-            )
-            # Floor risk level: static severity as minimum when finding is valid
-            if issue.is_valid:
-                issue = issue.model_copy(update={
-                    "risk_level": self._floor_risk(
-                        issue.risk_level, finding.get("severity", "")
-                    )
-                })
-            issues.append(issue)
+        for cluster in fusion.clusters:
+            rep = cluster.representative
+            finding = self._make_finding_relative({**rep, "rule_id": rep.get("rule_id")}, scan_path)
+            context = self._issue_context(rep, scan_path)
+            verdict = review_results.get(id(cluster))
+            route = cluster.route if (cluster.route != "review" or verdict is not None) else "unreviewed"
 
-        # TaintFlow issues: already LLM-judged — skip second validation
-        for taint in taint_issues:
-            rel_path = self._make_finding_relative(
-                {"file_path": taint.file_path}, scan_path
-            )["file_path"]
-            issues.append(taint.model_copy(update={"file_path": rel_path}))
+            if route == "review":
+                validated = self.result_validation_agent.validate(verdict)
+                issue = issue_service.create_from_review_result(
+                    task_id=task_id, finding=finding, review_result=validated, **context,
+                )
+                if issue.is_valid:
+                    issue = issue.model_copy(update={
+                        "risk_level": self._floor_risk(issue.risk_level, rep.get("severity", "")),
+                    })
+            else:
+                issue = issue_service.create_from_static_finding(task_id=task_id, finding=finding, **context)
+                messages = list(dict.fromkeys(str(f.get("message") or "") for f in cluster.members))
+                if route == "consensus":
+                    reason = ("Found independently by static analysis and the LLM semantic audit: "
+                              + " | ".join(messages))
+                    confidence = 0.9
+                else:
+                    reason = "Not reviewed by the LLM (review disabled or budget exhausted); detector verdict: " + " | ".join(messages)
+                    confidence = _detector_confidence(cluster)
+                issue = issue.model_copy(update={"reason": reason[:2000], "confidence": confidence})
+
+            issues.append(issue.model_copy(update={
+                "tool": "+".join(sorted({str(f.get("tool")) for f in cluster.members})),
+                "cwe": cluster.cwe,
+                "sources": cluster.sources,
+                "review_route": route,
+                "issue_type": issue.issue_type if route == "review" else f"{cluster.cwe} ({cluster.category})",
+            }))
+
+        # Code-quality findings: reported as low risk, never sent to the LLM.
+        for finding in fusion.quality:
+            issue = issue_service.create_from_static_finding(
+                task_id=task_id, finding=self._make_finding_relative(finding, scan_path),
+            )
+            issues.append(issue.model_copy(update={
+                "risk_level": "low",
+                "confidence": 0.5,
+                "issue_type": f"code-quality ({finding.get('rule_id')})",
+                "sources": [f"{finding.get('tool')}:{finding.get('rule_id')}"],
+                "review_route": "quality",
+            }))
+
+        for issue in rule_issues:
+            rel = self._make_finding_relative({"file_path": issue.file_path}, scan_path)["file_path"]
+            issues.append(issue.model_copy(update={"file_path": rel, "review_route": "project-rule"}))
 
         return _dedup_issues(issues)
+
+    def _issue_context(self, finding: dict, scan_path: Path) -> dict:
+        """Code snippet, AST summary and call chain for the issue detail view."""
+        try:
+            ctx = context_builder.build_issue_context(finding, scan_path)
+        except Exception:
+            logger.exception("Context building failed for %s", finding.get("file_path"))
+            return {}
+        return {
+            "code_snippet": ctx.get("code_snippet"),
+            "ast_summary": ctx.get("ast_summary"),
+            "ast_context": ctx.get("ast_context") or {},
+            "call_chain": ctx.get("call_chain") or [],
+            "call_chain_graph": ctx.get("call_chain_graph") or {},
+            "dependencies": ctx.get("dependencies") or [],
+        }
 
     # ── Internal helpers ───────────────────────────────────────────────────────
 
@@ -495,6 +544,43 @@ class ReviewService:
         _FLOOR_MAP = {"error": "high", "warning": "medium"}
         floor = _FLOOR_MAP.get(static_severity.lower(), "low")
         return floor if _RISK_RANK.get(floor, 0) > _RISK_RANK.get(llm_risk, 0) else llm_risk
+
+
+def _review_payload(cluster: Cluster) -> dict:
+    """What the review agent sees for a cluster: its representative location,
+    plus where the suspicion came from."""
+    rep = cluster.representative
+    origin = "LLM semantic audit" if cluster.paths == {LLM} else "static analysis"
+    messages = "; ".join(dict.fromkeys(str(f.get("message") or "") for f in cluster.members))
+    return {
+        **rep,
+        "cwe": cluster.cwe,
+        "origin": origin,
+        "message": messages[:1500],
+        "rule_id": ", ".join(sorted({str(f.get("rule_id")) for f in cluster.members})),
+    }
+
+
+def _detector_confidence(cluster: Cluster) -> float:
+    llm_scores = [float(f.get("confidence", 0.7)) for f in cluster.members if path_of(f) == LLM]
+    if llm_scores:
+        return round(min(max(llm_scores) * 0.8, 0.8), 2)
+    return 0.6
+
+
+def _issue_to_finding(issue: ReviewIssueRead, tool: str) -> dict:
+    """Adapt an agent that still returns ReviewIssueRead to a detector dict."""
+    return {
+        "tool": tool,
+        "rule_id": issue.rule_id,
+        "cwe": issue.issue_type,  # e.g. "taint-flow (CWE-121)"; cwe.normalize extracts it
+        "severity": "error" if issue.risk_level in ("high", "critical") else "warning",
+        "message": issue.description,
+        "file_path": issue.file_path,
+        "line": issue.line,
+        "column": issue.column,
+        "confidence": issue.confidence,
+    }
 
 
 def _dedup_issues(issues: list[ReviewIssueRead]) -> list[ReviewIssueRead]:

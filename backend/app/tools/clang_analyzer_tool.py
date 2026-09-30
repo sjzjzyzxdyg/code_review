@@ -1,4 +1,5 @@
 import logging
+import re
 import subprocess
 from pathlib import Path
 
@@ -75,22 +76,28 @@ class ClangAnalyzerTool:
             if path.is_file() and path.suffix.lower() in extensions
         ]
 
+    # Anchored on ":<line>:<col>: <severity>:" rather than split(":") so a
+    # Windows drive letter ("C:\src\a.c:12:5: warning: ...") doesn't shift
+    # every field and collapse all findings onto line 1.
+    _DIAG_RE = re.compile(
+        r"^(?P<file>.*?):(?P<line>\d+):(?P<col>\d+):\s*(?P<sev>(?:fatal )?error|warning):\s*(?P<msg>.*)$"
+    )
+
     def _parse_text_output(self, stderr: str, source: Path) -> list[dict]:
         findings: list[dict] = []
         for line in stderr.splitlines():
-            if "warning:" not in line and "error:" not in line:
+            match = self._DIAG_RE.match(line.strip())
+            if not match:
                 continue
-            parts = line.split(":", 4)
-            if len(parts) < 5:
+            if match.group("sev") != "warning":
+                # Compiler errors (e.g. a missing header) are not analyzer
+                # findings; they only mean the file couldn't be analysed.
+                logger.debug("clang could not analyse %s: %s", source, match.group("msg"))
                 continue
-            try:
-                line_number = int(parts[1])
-                column = int(parts[2])
-            except ValueError:
-                line_number = 1
-                column = None
-            severity = "warning" if "warning:" in line else "error"
-            message = parts[-1].strip()
+            line_number = int(match.group("line"))
+            column = int(match.group("col"))
+            severity = "warning"
+            message = match.group("msg").strip()
             findings.append(
                 {
                     "tool": "clang",

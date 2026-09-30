@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     llm_base_url: str = "https://api.openai.com/v1"
     llm_model: str = "deepseek-v4-flash"
     llm_timeout_seconds: int = 30
+    # How many single-path findings the review agent verifies per scan. Findings
+    # beyond this are kept with their detector verdict, never dropped.
+    llm_max_reviews: int = 40
 
     # Hard cap on any external static-analysis subprocess (cppcheck/clang/...)
     # so a pathological input can't hang a detection worker thread forever.

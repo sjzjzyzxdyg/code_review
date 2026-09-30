@@ -1,0 +1,384 @@
+{
+  "tag": "static-v2",
+  "timestamp": "2026-09-29T15:17:34",
+  "dataset": "samples/juliet-heldout",
+  "sanitized": true,
+  "detectors": [
+    "cppcheck",
+    "clang",
+    "clang_custom",
+    "cross_file",
+    "semantic_audit"
+  ],
+  "llm_enabled": false,
+  "llm_model": null,
+  "max_llm_reviews": 40,
+  "task_status": "completed",
+  "task_error": null,
+  "seconds": 68.5,
+  "llm_usage": {
+    "semantic_audit_agent": {
+      "calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0
+    },
+    "llm_review_agent": {
+      "calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0
+    },
+    "taint_flow_agent": {
+      "calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0
+    }
+  },
+  "scores": {
+    "raw": {
+      "cases": 120,
+      "recall": 0.7333,
+      "precision": 0.4809,
+      "f1": 0.5809,
+      "good_fp_rate": 0.7917,
+      "loose_recall": 0.8583,
+      "bad_flagged": 88,
+      "good_flagged": 95,
+      "findings": {
+        "bad": 196,
+        "good": 333,
+        "neutral": 1,
+        "outside_dataset": 0
+      }
+    },
+    "raw_security": {
+      "cases": 120,
+      "recall": 0.3333,
+      "precision": 0.6452,
+      "f1": 0.4396,
+      "good_fp_rate": 0.1833,
+      "loose_recall": 0.3417,
+      "bad_flagged": 40,
+      "good_flagged": 22,
+      "findings": {
+        "bad": 67,
+        "good": 48,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "valid": {
+      "cases": 120,
+      "recall": 0.7333,
+      "precision": 0.4809,
+      "f1": 0.5809,
+      "good_fp_rate": 0.7917,
+      "loose_recall": 0.8583,
+      "bad_flagged": 88,
+      "good_flagged": 95,
+      "findings": {
+        "bad": 173,
+        "good": 317,
+        "neutral": 1,
+        "outside_dataset": 0
+      }
+    },
+    "security": {
+      "cases": 120,
+      "recall": 0.3333,
+      "precision": 0.6452,
+      "f1": 0.4396,
+      "good_fp_rate": 0.1833,
+      "loose_recall": 0.3417,
+      "bad_flagged": 40,
+      "good_flagged": 22,
+      "findings": {
+        "bad": 44,
+        "good": 34,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    }
+  },
+  "security_by_route": {
+    "unreviewed": {
+      "cases": 120,
+      "recall": 0.3333,
+      "precision": 0.6452,
+      "f1": 0.4396,
+      "good_fp_rate": 0.1833,
+      "loose_recall": 0.3417,
+      "bad_flagged": 40,
+      "good_flagged": 22,
+      "findings": {
+        "bad": 44,
+        "good": 34,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    }
+  },
+  "review_rejected": {
+    "cases": 120,
+    "recall": 0.0,
+    "precision": 0.0,
+    "f1": 0.0,
+    "good_fp_rate": 0.0,
+    "loose_recall": 0.0,
+    "bad_flagged": 0,
+    "good_flagged": 0,
+    "findings": {
+      "bad": 0,
+      "good": 0,
+      "neutral": 0,
+      "outside_dataset": 0
+    }
+  },
+  "route_counts": {
+    "unreviewed": 78,
+    "quality": 413
+  },
+  "raw_security_by_tool": {
+    "clang": {
+      "cases": 120,
+      "recall": 0.225,
+      "precision": 0.75,
+      "f1": 0.3462,
+      "good_fp_rate": 0.075,
+      "loose_recall": 0.225,
+      "bad_flagged": 27,
+      "good_flagged": 9,
+      "findings": {
+        "bad": 28,
+        "good": 15,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "clang-cross-file": {
+      "cases": 120,
+      "recall": 0.0833,
+      "precision": 0.4762,
+      "f1": 0.1418,
+      "good_fp_rate": 0.0917,
+      "loose_recall": 0.0917,
+      "bad_flagged": 10,
+      "good_flagged": 11,
+      "findings": {
+        "bad": 18,
+        "good": 24,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "cppcheck": {
+      "cases": 120,
+      "recall": 0.1167,
+      "precision": 0.7,
+      "f1": 0.2,
+      "good_fp_rate": 0.05,
+      "loose_recall": 0.1167,
+      "bad_flagged": 14,
+      "good_flagged": 6,
+      "findings": {
+        "bad": 21,
+        "good": 9,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    }
+  },
+  "security_by_cwe": {
+    "CWE121_Stack_Based_Buffer_Overflow": {
+      "cases": 10,
+      "recall": 0.1,
+      "precision": 0.5,
+      "f1": 0.1667,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.1,
+      "bad_flagged": 1,
+      "good_flagged": 1,
+      "findings": {
+        "bad": 1,
+        "good": 2,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE122_Heap_Based_Buffer_Overflow": {
+      "cases": 10,
+      "recall": 0.2,
+      "precision": 0.6667,
+      "f1": 0.3077,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.2,
+      "bad_flagged": 2,
+      "good_flagged": 1,
+      "findings": {
+        "bad": 2,
+        "good": 2,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE134_Uncontrolled_Format_String": {
+      "cases": 10,
+      "recall": 0.1,
+      "precision": 0.5,
+      "f1": 0.1667,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.1,
+      "bad_flagged": 1,
+      "good_flagged": 1,
+      "findings": {
+        "bad": 1,
+        "good": 2,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE190_Integer_Overflow": {
+      "cases": 10,
+      "recall": 0.1,
+      "precision": 1.0,
+      "f1": 0.1818,
+      "good_fp_rate": 0.0,
+      "loose_recall": 0.1,
+      "bad_flagged": 1,
+      "good_flagged": 0,
+      "findings": {
+        "bad": 1,
+        "good": 0,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE191_Integer_Underflow": {
+      "cases": 10,
+      "recall": 0.1,
+      "precision": 0.5,
+      "f1": 0.1667,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.1,
+      "bad_flagged": 1,
+      "good_flagged": 1,
+      "findings": {
+        "bad": 1,
+        "good": 1,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE369_Divide_by_Zero": {
+      "cases": 10,
+      "recall": 0.1,
+      "precision": 0.5,
+      "f1": 0.1667,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.1,
+      "bad_flagged": 1,
+      "good_flagged": 1,
+      "findings": {
+        "bad": 1,
+        "good": 2,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE401_Memory_Leak": {
+      "cases": 10,
+      "recall": 0.8,
+      "precision": 0.6154,
+      "f1": 0.6957,
+      "good_fp_rate": 0.5,
+      "loose_recall": 0.8,
+      "bad_flagged": 8,
+      "good_flagged": 5,
+      "findings": {
+        "bad": 10,
+        "good": 8,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE415_Double_Free": {
+      "cases": 10,
+      "recall": 0.6,
+      "precision": 0.6,
+      "f1": 0.6,
+      "good_fp_rate": 0.4,
+      "loose_recall": 0.6,
+      "bad_flagged": 6,
+      "good_flagged": 4,
+      "findings": {
+        "bad": 6,
+        "good": 6,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE476_NULL_Pointer_Dereference": {
+      "cases": 10,
+      "recall": 0.4,
+      "precision": 0.8,
+      "f1": 0.5333,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.4,
+      "bad_flagged": 4,
+      "good_flagged": 1,
+      "findings": {
+        "bad": 4,
+        "good": 1,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE590_Free_Memory_Not_on_Heap": {
+      "cases": 10,
+      "recall": 0.7,
+      "precision": 0.7778,
+      "f1": 0.7368,
+      "good_fp_rate": 0.2,
+      "loose_recall": 0.7,
+      "bad_flagged": 7,
+      "good_flagged": 2,
+      "findings": {
+        "bad": 8,
+        "good": 4,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE690_NULL_Deref_From_Return": {
+      "cases": 10,
+      "recall": 0.3,
+      "precision": 0.4286,
+      "f1": 0.3529,
+      "good_fp_rate": 0.4,
+      "loose_recall": 0.4,
+      "bad_flagged": 3,
+      "good_flagged": 4,
+      "findings": {
+        "bad": 3,
+        "good": 5,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    },
+    "CWE762_Mismatched_Memory_Management_Routines": {
+      "cases": 10,
+      "recall": 0.5,
+      "precision": 0.8333,
+      "f1": 0.625,
+      "good_fp_rate": 0.1,
+      "loose_recall": 0.5,
+      "bad_flagged": 5,
+      "good_flagged": 1,
+      "findings": {
+        "bad": 6,
+        "good": 1,
+        "neutral": 0,
+        "outside_dataset": 0
+      }
+    }
+  }
+}
